@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=Sora:wght@100..800&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer theme, base, components, utilities;
+
+@layer theme {
+  /* breaking points */
+  --breakpoint-xxs:20rem;
+  --breakpoint-xs:21.875rem;
+  --breakpoint-sm:30rem;
+  --breakpoint-md:47.9375rem;
+  --breakpoint-lg:61.875rem;
+  --breakpoint-xlg:64rem;
+  --breakpoint-xl:75rem;
+  --breakpoint-2xl:80rem;
+  --breakpoint-3xl:90rem;
+  /* font families */
+  --font-family-sans: 'Sora', theme(fontFamily.sans);
+  --font-serif:"Ancizar Sans", theme(fontFamily.serif);
+}
+@layer base {
+  *{
+    @apply m-0 p-0 box-border;
+  }
+  html{
+    @apply w-full h-full scroll-smooth;
+  }
+  body{
+    @apply w-full h-full font-sans font-normal text-lg bg-slate-500/2;
+  }
+  main{
+    @apply w-10/12 mx-auto;
+  }
+}
+
+@layer components {
+
+  .gradient-bg {
+    @apply bg-linear-to-r/decreasing from-amber-700/70 via-blue-300/80 to-teal-700/65 mt-5;
+  }
+  .radial {
+    @apply bg-radial from-violet-500 from-40%  to-indigo-700;
+  }
+  .custom-radial{
+    @apply radial-gradient(circle farthest-corner at -5.6% -6.8%, rgba(103,49,145,1) 37.3%, rgba(50,0,129,1) 73.5%);
+  }
+}
+
