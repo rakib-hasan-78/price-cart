@@ -3,48 +3,54 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@layer theme, base, components, utilities;
+@theme {
+  /* --- Correct way to define breakpoints --- */
+  --breakpoint-xxs: 20rem;
+  --breakpoint-xs: 21.875rem;
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 47.9375rem;
+  --breakpoint-lg: 61.875rem;
+  --breakpoint-xlg: 64rem;
+  --breakpoint-xl: 75rem;
+  --breakpoint-2xl: 80rem;
+  --breakpoint-3xl: 90rem;
 
-@layer theme {
-  /* breaking points */
-  --breakpoint-xxs:20rem;
-  --breakpoint-xs:21.875rem;
-  --breakpoint-sm:30rem;
-  --breakpoint-md:47.9375rem;
-  --breakpoint-lg:61.875rem;
-  --breakpoint-xlg:64rem;
-  --breakpoint-xl:75rem;
-  --breakpoint-2xl:80rem;
-  --breakpoint-3xl:90rem;
-  /* font families */
+  /* --- Correct way to define font families --- */
   --font-family-sans: 'Sora', theme(fontFamily.sans);
-  --font-serif:"Ancizar Sans", theme(fontFamily.serif);
+  --font-family-serif: 'Ancizar Sans', theme(fontFamily.serif);
+  
 }
+
 @layer base {
-  *{
+  * {
     @apply m-0 p-0 box-border;
   }
-  html{
+  html {
     @apply w-full h-full scroll-smooth;
   }
-  body{
-    @apply w-full h-full font-sans font-normal text-lg bg-slate-500/2;
+  body {
+    @apply w-full h-full font-sans font-normal text-lg bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))] capitalize;
   }
-  main{
-    @apply w-10/12 mx-auto;
+  main {
+    @apply xxs:max-w-full xl:max-w-7xl mx-auto;
+  }
+  .text-bg {
+    @apply bg-gradient-to-r from-pink-400 via-fuchsia-500 to-blue-400 bg-clip-text text-transparent;
   }
 }
 
 @layer components {
-
-  .gradient-bg {
-    @apply bg-linear-to-r/decreasing from-amber-700/70 via-blue-300/80 to-teal-700/65 mt-5;
+  .custom-bg {
+    @apply bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_theme(colors.purple.800)_37.3%,_theme(colors.indigo.900)_73.5%)] bg-blend-color  text-white backdrop-blur-md bg-white/10;
   }
-  .radial {
-    @apply bg-radial from-violet-500 from-40%  to-indigo-700;
+  .bg-hero {
+    /* This will continue to work correctly */
+    @apply w-full h-full xxs:rounded-b-lg lg:rounded-b-2xl relative flex items-center flex-wrap justify-center py-3;
   }
-  .custom-radial{
-    @apply radial-gradient(circle farthest-corner at -5.6% -6.8%, rgba(103,49,145,1) 37.3%, rgba(50,0,129,1) 73.5%);
+  .hero-title{
+      @apply font-extrabold sm:font-bold text-center xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xlg:text-5xl xl:text-6xl subpixel-antialiased xxs:leading-6 md:leading-10 xlg:leading-13 xl:leading-16 xxs:px-0 sm:px-6 md:px-10 py-2 font-serif;
+  }
+  .hero-brief{
+    @apply xxs:text-xs sm:text-sm md:text-lg lg:text-xl sm:px-9 md:px-6 lg:px-14 xxs:py-2 lg:py-4 xl:py-6 font-light sm:font-normal text-center font-sans;
   }
 }
-

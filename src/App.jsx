@@ -1,26 +1,25 @@
-import { useState } from 'react'
+import React from 'react'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <main>
 
-      <div className='w-full h-auto bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_rgba(103,49,145,1)_37.3%,_rgba(50,0,129,1)_73.5%)] p-6 text-white flex items-center justify-center flex-col'>
-        
-                <h1 className='bg-linear-to-r from-amber-300 via-orange-400 to-emerald-200 bg-clip-text text-transparent text-6xl font-black text-center capitalize font-serif'> dashboard </h1>
-                <div className="card">
-                  <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                  </button>
-                  <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                  </p>
-                </div>
-                <p className="read-the-docs">
-                  Click on the Vite and React logos to learn more
+      <div 
+      className='custom-bg bg-hero'>
+              <div className='w-full flex flex-col items-center justify-center xxs:px-4 sm:px-8 md:px-28 xl:px-20'>
+
+                <h1 className='text-bg hero-title'> Upgrade Your Tech Accessorize with Gadget Heaven Accessories </h1>
+                
+                <p className="hero-brief">
+                  Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!
                 </p>
+                <div className='xxs:w-full xl:w-3/12 flex items-center justify-center xxs:border-1 xl:border-3 rounded-full my-3 p-1.5'>
+                <button className='btn btn-primary w-full font-sans font-bold xxs:text-lg xl:text-2xl uppercase rounded-full xxs:py-6 xl:py-8' type="button">shop now</button>
+                </div>
+              </div>
         
       </div>
     </main>
