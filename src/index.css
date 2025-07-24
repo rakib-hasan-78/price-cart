@@ -32,7 +32,10 @@
     @apply w-full h-full font-sans font-normal text-lg bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))] capitalize;
   }
   main {
-    @apply xxs:max-w-full xl:max-w-7xl mx-auto;
+    @apply xxs:w-full lg:w-11/12 mx-auto;
+  }
+  img{
+    @apply w-full h-full object-cover align-middle;
   }
   .text-bg {
     @apply bg-gradient-to-r from-pink-400 via-fuchsia-500 to-blue-400 bg-clip-text text-transparent;
@@ -48,9 +51,13 @@
     @apply w-full h-full xxs:rounded-b-lg lg:rounded-b-2xl relative flex items-center flex-wrap justify-center py-3;
   }
   .hero-title{
-      @apply font-extrabold sm:font-bold text-center xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xlg:text-5xl xl:text-6xl subpixel-antialiased xxs:leading-6 md:leading-10 xlg:leading-13 xl:leading-16 xxs:px-0 sm:px-6 md:px-10 py-2 font-serif;
+      @apply font-extrabold sm:font-bold text-center xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xlg:text-5xl xl:text-5xl  subpixel-antialiased xxs:leading-6 sm:leading-8 md:leading-10 xlg:leading-13 xl:leading-16 xxs:px-0 sm:px-6 md:px-10 xl:px-1 py-2 font-serif;
   }
   .hero-brief{
-    @apply xxs:text-xs sm:text-sm md:text-lg lg:text-xl sm:px-9 md:px-6 lg:px-14 xxs:py-2 lg:py-4 xl:py-6 font-light sm:font-normal text-center font-sans;
+    @apply xxs:text-xs sm:text-sm md:text-lg lg:text-2xl sm:px-12 md:px-6 lg:px-14 xxs:py-2 lg:py-4 xl:py-6 font-light sm:font-normal text-center font-sans;
   }
+  .btn-hero{
+    @apply bg-linear-to-t from-purple-300 to-indigo-300 w-full font-serif font-bold xxs:text-lg xl:text-xl uppercase rounded-full xxs:py-2 xl:py-4 cursor-pointer text-purple-600 ease-in-out delay-100 transition-all hover:bg-gradient-to-r hover:from-purple-300 hover:to-indigo-300 hover:text-purple-700;
+  }
+  
 }
