@@ -59,5 +59,8 @@
   .btn-hero{
     @apply bg-linear-to-t from-purple-300 to-indigo-300 w-full font-serif font-bold xxs:text-lg xl:text-xl uppercase rounded-full xxs:py-2 xl:py-4 cursor-pointer text-purple-600 ease-in-out delay-100 transition-all hover:bg-gradient-to-r hover:from-purple-300 hover:to-indigo-300 hover:text-purple-700;
   }
+  .btn-error-handle{
+    @apply btn w-auto text-xl font-semibold capitalize xxs:btn-wide btn-error text-red-100 rounded-full py-6;
+  }
   
 }

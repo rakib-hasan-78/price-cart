@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorElement from './../../Compoments/ErrorElement/ErrorElement';
+import ErrorElement from '../../Components/ErrorElement/ErrorElement';
 
 const Error = () => {
     return (

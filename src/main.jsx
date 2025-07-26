@@ -13,6 +13,13 @@ const root = createBrowserRouter([
     path:'/',
     element: <Root />,
     errorElement: <Error />,
+    children:[
+      {
+        path:'/',
+        loader:()=>fetch('data/data.json').then(res=>res.json()),
+        element: <Home />
+      }
+    ]
   }
 ])
 
