@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import Nav from './../Nav/Nav';
 
 const Header = () => {
-  const [isScroll, setIsScroll] = useState(false);
+    const [isScroll, setIsScroll] = useState(false);
+    useEffect(()=>{
+        const header =document.getElementById('header');
+        if(!header) return;
+        const headerPosition = header.offsetTop;
 
-  useEffect(() => {
-    const stickHandler = () => {
-      const scrollY = window.scrollY;
-      setIsScroll(scrollY > 50); // Stick after 50px scroll
-    };
+        const stickHandler = ()=>{
 
-    window.addEventListener('scroll', stickHandler);
-    return () => window.removeEventListener('scroll', stickHandler);
-  }, []);
+            const stickPosition = window.scrollY;
+            stickPosition > headerPosition ? setIsScroll(true)  : setIsScroll(false);
+        }
 
-  return (
-    <header
-      className={`w-full transition-all duration-300 ease-in-out z-40 ${
-        isScroll ? 'fixed top-0 left-0 rounded-t-none' : 'relative'
-      }`}
-    >
-      <Nav />
-    </header>
-  );
+        window.addEventListener('scroll', stickHandler);
+        return ()=> window.removeEventListener('scroll', stickHandler)
+
+    }, [])
+    return (
+        <header
+        id='header' 
+        className={`w-full rounded-t-xl border-none mb-0 -mt-0.5 ${isScroll ? 'fixed top-0 z-50 left-0':' relative z-30'}`}>
+            <Nav isScroll={isScroll} />
+        </header>
+    );
 };
 
-export default Header;
+export default Header; 

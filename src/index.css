@@ -66,4 +66,17 @@
   .body-default-bg{
     @apply bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))];
   }
+
+}
+
+@layer utilities {
+  .custom-section {
+    background: linear-gradient(
+      to right,
+      rgba(99, 102, 241, 0.6),     /* indigo-500/60 */
+      rgba(139, 92, 246, 0.7),     /* purple-500/70 */
+      rgba(236, 72, 153, 0.1)      /* pink-500/10 */
+    );
+    @apply my-2 backdrop-blur-xl backdrop-saturate-150 bg-blend-color-dodge border border-white/20 shadow-lg rounded-2xl;
+  }
 }

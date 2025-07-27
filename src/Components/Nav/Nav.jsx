@@ -5,13 +5,13 @@ import { CiHeart } from "react-icons/ci";
 import NavLinks from '../NavLinks/NavLinks';
 
 
-const Nav = () => {
+const Nav = ({isScroll}) => {
     const location = useLocation();
     const preferenceBG = location.pathname==='/';
 
     return (
         <div 
-        className={`navbar rounded-t-xl border-none shadow-none mb-0 ${location.pathname==='/'?'custom-bg':'bg-transparent'}`}>
+        className={`navbar ${isScroll ? 'rounded-t-none shadow-2xl':'rounded-t-xl' }  border-none shadow-none mb-0 ${location.pathname==='/'?'custom-bg':'bg-transparent'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

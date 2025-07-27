@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Hero from './../../Components/Hero/Hero';
 import DisplayProduct from './../../Components/DisplayProduct/DisplayProduct';
+import Search from './../../Components/Search/Search';
 
 
 
@@ -29,6 +30,7 @@ const Home = () => {
             }
            </Hero>
            <DisplayProduct />
+           <Search />
         </div>   
     );
 };
