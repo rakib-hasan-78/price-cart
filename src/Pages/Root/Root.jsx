@@ -7,7 +7,7 @@ const Root = () => {
     
     return (
         <div className='w-full min-h-full'>
-            <main className='main xxs:pt-0 lg:pt-5'>
+            <main className='main xxs:pt-0 lg:pt-5 relative'>
             <Headroom>
             <Header />
             </Headroom>

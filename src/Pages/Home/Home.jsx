@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Hero from './../../Components/Hero/Hero';
+import DisplayProduct from './../../Components/DisplayProduct/DisplayProduct';
 
 
 
@@ -13,7 +14,7 @@ const Home = () => {
             {
                <div className='bg-hero'>
 
-                <div className='w-full xl:px-40'>
+                <div className='w-full xl:px-20 2xl:px-40 '>
                     <h1 className='text-bg hero-title'> Upgrade Your Tech Accessorize with Gadget Heaven Accessories </h1>
                     
                     <p className="hero-brief">
@@ -27,7 +28,7 @@ const Home = () => {
                 </div>  
             }
            </Hero>
-
+           <DisplayProduct />
         </div>   
     );
 };
