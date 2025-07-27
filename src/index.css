@@ -66,5 +66,4 @@
   .body-default-bg{
     @apply bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))];
   }
-  
 }
