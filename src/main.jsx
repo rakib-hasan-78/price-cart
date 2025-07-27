@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Pages/Home/Home'
 import Root from './Pages/Root/Root';
 import Error from './Pages/Error/Error';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 
 const root = createBrowserRouter([
@@ -18,6 +19,10 @@ const root = createBrowserRouter([
         path:'/',
         loader:()=>fetch('data/data.json').then(res=>res.json()),
         element: <Home />
+      },
+      {
+        path:'/dashboard',
+        element: <Dashboard />
       }
     ]
   }

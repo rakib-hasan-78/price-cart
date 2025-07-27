@@ -29,7 +29,7 @@
     @apply w-full h-full scroll-smooth;
   }
   body {
-    @apply w-full h-full font-sans font-normal text-lg bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))] capitalize;
+    @apply w-full min-h-full font-sans font-normal text-lg bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))] capitalize;
   }
   main {
     @apply xxs:w-full lg:w-11/12 mx-auto;
@@ -48,7 +48,7 @@
   }
   .bg-hero {
     /* This will continue to work correctly */
-    @apply w-full h-full xxs:rounded-b-lg lg:rounded-b-2xl relative flex items-center flex-wrap justify-center py-3;
+    @apply w-full xxs:rounded-b-lg lg:rounded-b-2xl relative flex items-start flex-wrap justify-center py-3;
   }
   .hero-title{
       @apply font-extrabold sm:font-bold text-center xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xlg:text-5xl xl:text-5xl  subpixel-antialiased xxs:leading-6 sm:leading-8 md:leading-10 xlg:leading-13 xl:leading-16 xxs:px-0 sm:px-6 md:px-10 xl:px-1 py-2 font-serif;
@@ -61,6 +61,10 @@
   }
   .btn-error-handle{
     @apply btn w-auto text-xl font-semibold capitalize xxs:btn-wide btn-error text-red-100 rounded-full py-6;
+  }
+
+  .body-default-bg{
+    @apply bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))];
   }
   
 }

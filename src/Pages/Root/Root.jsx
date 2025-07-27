@@ -6,8 +6,8 @@ import Headroom from 'react-headroom';
 const Root = () => {
     
     return (
-        <div>
-            <main className='main'>
+        <div className='w-full min-h-full'>
+            <main className='main xxs:pt-0 lg:pt-5'>
             <Headroom>
             <Header />
             </Headroom>

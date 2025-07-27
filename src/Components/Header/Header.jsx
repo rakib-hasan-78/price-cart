@@ -3,9 +3,9 @@ import Nav from './../Nav/Nav';
 
 const Header = () => {
     return (
-        <div className={`w-full rounded-t-xl `}>
+        <header className={`w-full rounded-t-xl border-none mb-0 -mt-0.5`}>
             <Nav />
-        </div>
+        </header>
     );
 };
 
