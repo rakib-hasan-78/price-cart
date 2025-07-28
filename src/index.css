@@ -79,4 +79,10 @@
     );
     @apply my-2 backdrop-blur-xl backdrop-saturate-150 bg-blend-color-dodge border border-white/20 shadow-lg rounded-2xl;
   }
+  .btn-gradient{
+    @apply relative inline-block rounded-full p-[1px] bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500;
+  }
+  .card-gradient {
+    @apply bg-radial from-slate-500/8 from-40% to-violet-700/25 backdrop-blur-lg bg-blend-color;
+  }
 }
