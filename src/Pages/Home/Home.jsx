@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
 import Hero from './../../Components/Hero/Hero';
 import DisplayProduct from './../../Components/DisplayProduct/DisplayProduct';
 import Search from './../../Components/Search/Search';
@@ -8,8 +7,7 @@ import Products from './../../Components/Products/Products';
 
 
 const Home = () => {
-    const data = useLoaderData();
-    console.log(data.length);
+
     return (
         <div className={`w-full min-h-full flex flex-col items-center`}>
            <Hero>
