@@ -21,7 +21,7 @@ const Header = () => {
     return (
         <header
         id='header' 
-        className={`w-full rounded-t-xl border-none mb-0 -mt-0.5 ${isScroll ? 'fixed top-0 z-50 left-0':' relative z-30'}`}>
+        className={`w-full lg:rounded-t-xl border-none mb-0 -mt-0.5 ${isScroll ? 'fixed top-0 z-50 left-0':' relative z-30'}`}>
             <Nav isScroll={isScroll} />
         </header>
     );

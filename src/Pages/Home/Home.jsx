@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import Hero from './../../Components/Hero/Hero';
 import DisplayProduct from './../../Components/DisplayProduct/DisplayProduct';
 import Search from './../../Components/Search/Search';
+import Products from './../../Components/Products/Products';
 
 
 
@@ -10,7 +11,7 @@ const Home = () => {
     const data = useLoaderData();
     console.log(data.length);
     return (
-        <div className={`w-full min-h-full`}>
+        <div className={`w-full min-h-full flex flex-col items-center`}>
            <Hero>
             {
                <div className='bg-hero'>
@@ -23,7 +24,7 @@ const Home = () => {
                     </p>
 
                 </div>
-                    <div className='xxs:w-11/12 lg:w-2/12 flex items-center justify-center xxs:border-1 xl:border-2 rounded-full my-3 p-1.5'>
+                    <div className='xxs:w-11/12 lg:w-2/12 flex items-center justify-center xxs:border-1 xl:border-2 rounded-full xxs:my-3 md:my-2 lg:my-3 p-1.5'>
                     <button className='btn-hero' type="button">shop now</button>
                     </div>
                 </div>  
@@ -31,6 +32,7 @@ const Home = () => {
            </Hero>
            <DisplayProduct />
            <Search />
+           <Products />
         </div>   
     );
 };
