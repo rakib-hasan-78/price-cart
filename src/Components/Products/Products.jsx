@@ -1,13 +1,14 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import Card from './../Card/Card';
+import React, { useState } from 'react';
+import Categories from './../Categories/Categories';
+import ProductBase from './../ProductBase/ProductBase';
 
 const Products = () => {
-    const products = useLoaderData();
-    
+
+    const [categories, setCategories] = useState('all');
+
     return (
         <div 
-        className='w-full h-auto py-3 flex flex-col items-center justify-center border'
+        className='w-full h-auto py-3 flex flex-col items-center justify-center'
         >
             <div className="w-7/12 h-auto flex items-center justify-center pb-4">
                 <h3 
@@ -17,13 +18,11 @@ const Products = () => {
                 </h3>
             </div>
             {/* products ' management division */}
-            <div className='w-full h-auto flex flex-col lg:flex-row xxs:items-center  lg:items-start justify-center border border-red-600 py-3 gap-5'>
-                <div className='w-2/12 border py-3'></div>
-                <div 
-                className='w-10/12 border border-green-500 py-3 grid xxs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-center justify-items-center'
-                >
-                <Card />
-                </div>
+            <div className='w-full h-auto flex flex-col lg:flex-row xxs:items-center  lg:items-start justify-center py-3 gap-5'>
+                {/* categories management */}
+                <Categories />
+                {/* product base */}
+                <ProductBase />
             </div>
 
         </div>

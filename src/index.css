@@ -85,4 +85,7 @@
   .card-gradient {
     @apply bg-radial from-slate-500/8 from-40% to-violet-700/25 backdrop-blur-lg bg-blend-color;
   }
+  .secondary-bg-gradient {
+    @apply rounded-2xl border border-white outline-0 bg-gradient-to-r from-purple-300 via-violet-200/50 to-pink-400/40 bg-blend-color-burn backdrop-blur-lg;
+  }
 }

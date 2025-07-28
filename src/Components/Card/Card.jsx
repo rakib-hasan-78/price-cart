@@ -10,12 +10,12 @@ const Card = () => {
     const expandHandler = ()=>{
         setExpand(!expand);
     }
-
+    
     return (
         <div 
-        className='w-full h-auto flex flex-col items-start justify-center border border-violet-50/30 shadow-md shadow-violet-600/30 rounded-2xl card-gradient p-4'>
+        className='w-full h-auto flex flex-col items-start justify-center border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient p-4'>
             {/* product image ===> */}
-            <div className='w-full h-40 rounded-2xl'>
+            <div className='w-full h-40 rounded-2xl bg-white'>
                 <img className='rounded-2xl' src={cdr} alt="xyz" />
             </div>
             {/* product details ===> */}
@@ -38,7 +38,7 @@ const Card = () => {
                     </span>
                     <span>
                         <button 
-                        className='btn size-10 rounded-full bg-radial from-pink-400 from-40% to-fuchsia-700 btn-circle text-2xl font-bold border border-pink-100 text-pink-100 inset-0'
+                        className='btn size-10 rounded-full bg-radial from-pink-400 from-40% to-fuchsia-700 btn-circle text-2xl font-bold border border-pink-50/5 text-pink-100 inset-0'
                         title='save to wishlist' 
                         type="button"
                         >
