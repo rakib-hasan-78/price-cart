@@ -1,6 +1,7 @@
 import React from 'react';
 
 const CtBtn = ({name , isActive, OnClick}) => {
+    // btn handler for selecting a category==>
     const categoryHandler = e=>{
         e.preventDefault();
         OnClick();

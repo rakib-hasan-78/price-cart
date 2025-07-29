@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { LuX } from "react-icons/lu";
-const Search = () => {
-    const [search, setSearch] = useState('')
+const Search = ({search, setSearch}) => {
+    
     return (
         <div className='xxs:w-10/11 lg:w-6/12 h-36 flex flex-col items-center justify-center  mx-auto py-5 relative xxs:-translate-y-1/3 lg:-translate-y-3/3 space-y-2'>
             <h3 className='bg-gradient-to-r from-zinc-900/80 to-slate-800/50 text-transparent bg-clip-text font-semibold  xxs:text-xl sm:text-2xl md:text-3xl lg:text-4xl py-1'>search products</h3>
@@ -20,7 +20,7 @@ const Search = () => {
                     )
                 }
             </div>
-            <span>ha</span>
+            <span>{search.length}</span>
         </div>
     );
 };

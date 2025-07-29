@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
-import cdr from '../../assets/hero.png';
 import { CiHeart } from "react-icons/ci";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsCart3 } from "react-icons/bs";
 
-const Card = () => {
+const Card = ({product}) => {
+    const {product_title, product_image, price} = product;
     const [expand, setExpand] = useState(false);
 
     const expandHandler = ()=>{
         setExpand(!expand);
     }
-    
+
     return (
         <div 
         className='w-full h-auto flex flex-col items-start justify-center border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient p-4'>
             {/* product image ===> */}
-            <div className='w-full h-40 rounded-2xl bg-white'>
-                <img className='rounded-2xl' src={cdr} alt="xyz" />
+            <div className='w-full h-56 rounded-2xl bg-white overflow-hidden'>
+                <img className='rounded-2xl w-full h-full align-middle ' src={product_image} alt={product_title} />
             </div>
             {/* product details ===> */}
-            <div className='w-full h-60 flex flex-col justify-start items-start'>
+            <div className='w-full h-64 flex flex-col justify-start items-start'>
                 {/* product title */}
                 <div className='w-full'>
                     <h3
                     onClick={expandHandler}
                      className={`font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-xl cursor-pointer mt-3 text-left text-black`}>
-                        { <span className={`${expand ? 'line-clamp-none':'line-clamp-1'}`}>dell inspiron 5xue amtbt 53oimn refelnb gyfg</span> }
+                        { <span className={`${expand ? 'line-clamp-none':'line-clamp-1'}`}>
+                            {product_title}
+                        </span> }
                      </h3>
                 </div>
                 {/* product price */}
@@ -34,7 +36,7 @@ const Card = () => {
                     className='font-semibold text-gray-900/60 mt-2 flex items-center justify-between'>
                     <span>
                         <span>price : $</span>
-                        <span> 459.00</span>
+                        <span> {price}</span>
                     </span>
                     <span>
                         <button 

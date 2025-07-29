@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Categories from './../Categories/Categories';
 import ProductBase from './../ProductBase/ProductBase';
 
-const Products = () => {
+const Products = ({search}) => {
 
     const [categories, setCategories] = useState('all');
+    
 
     return (
         <div 
@@ -22,7 +23,7 @@ const Products = () => {
                 {/* categories management */}
                 <Categories categories={categories} setCategories={setCategories} />
                 {/* product base */}
-                <ProductBase categories={categories} />
+                <ProductBase categories={categories} search={search} />
             </div>
 
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hero from './../../Components/Hero/Hero';
 import DisplayProduct from './../../Components/DisplayProduct/DisplayProduct';
 import Search from './../../Components/Search/Search';
@@ -7,7 +7,7 @@ import Products from './../../Components/Products/Products';
 
 
 const Home = () => {
-
+    const [search, setSearch]= useState('')
     return (
         <div className={`w-full min-h-full flex flex-col items-center`}>
            <Hero>
@@ -29,8 +29,8 @@ const Home = () => {
             }
            </Hero>
            <DisplayProduct />
-           <Search />
-           <Products />
+           <Search search={search} setSearch={setSearch} />
+           <Products search={search} />
         </div>   
     );
 };
