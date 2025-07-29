@@ -20,9 +20,9 @@ const Products = () => {
             {/* products ' management division */}
             <div className='w-full h-auto flex flex-col lg:flex-row xxs:items-center  lg:items-start justify-center py-3 gap-5'>
                 {/* categories management */}
-                <Categories />
+                <Categories categories={categories} setCategories={setCategories} />
                 {/* product base */}
-                <ProductBase />
+                <ProductBase categories={categories} />
             </div>
 
         </div>

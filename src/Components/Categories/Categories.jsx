@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import CtBtn from '../CtBtn/CtBtn';
 
-const Categories = () => {
+const Categories = ({categories, setCategories}) => {
+    const products = useLoaderData();
+    const [itemCategory, setItemCategory] = useState([])
+
+    useEffect(()=>{
+
+        const categoryList = ['all', ...new Set(products.map(product=>product.category))];
+        setItemCategory(categoryList);
+        
+    }, [products , setItemCategory])
+
+    const categoryHandler = (category)=>{
+        setCategories(category)
+    }
+
+    
     return (
         <div 
             className='w-2/12 border py-3 secondary-bg-gradient flex flex-wrap xxs:flex-row lg:flex-col items-center justify-center space-y-3 mt-3.5'
@@ -11,11 +28,11 @@ const Categories = () => {
             categories
             </h4>
             <div className='w-full h-auto flex xxs:flex-row lg:flex-col space-y-2 px-4'>
-                <button className='btn btn-wide rounded-full bg-radial-[at_50%_75%] from-violet-200  via-purple-400 via-35% to-violet-900 to-90% text-violet-100 capitalize'
-                >
-                    all   
-                </button>
-
+            {
+                itemCategory?.map(category=>{
+                  return  <CtBtn key={category} name={category} isActive={categories === category} OnClick={()=>categoryHandler(category)} />
+                })
+            }
             </div>
         </div>
 
