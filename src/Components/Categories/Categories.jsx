@@ -20,14 +20,14 @@ const Categories = ({categories, setCategories}) => {
     
     return (
         <div 
-            className='w-2/12 border py-3 secondary-bg-gradient flex flex-wrap xxs:flex-row lg:flex-col items-center justify-center space-y-3 mt-3.5'
+            className='xxs:w-full lg:w-2/12 border py-3 secondary-bg-gradient flex flex-wrap xxs:flex-row lg:flex-col items-center justify-center space-y-3 mt-3.5'
             >
             <h4 
             className='bg-gradient-to-r from-zinc-900/80 to-slate-800/text-transparent bg-clip-text font-semibold  xxs:text-sm:text-base md:text-lg lg:text-xl py-1'
             >
             categories
             </h4>
-            <div className='w-full h-auto flex xxs:flex-row lg:flex-col space-y-2 px-4'>
+            <div className='w-full h-auto flex xxs:flex-row flex-wrap  lg:flex-col space-y-2 xxs:space-x-1 lg:space-x-0 lg:px-4 '>
             {
                 itemCategory?.map(category=>{
                   return  <CtBtn key={category} name={category} isActive={categories === category} OnClick={()=>categoryHandler(category)} />
