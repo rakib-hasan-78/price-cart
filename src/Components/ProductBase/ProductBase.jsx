@@ -18,6 +18,7 @@ const ProductBase = ({categories, search}) => {
     }, [categories]);
 
     const displayProducts = filteredProduct.slice(0, visibleProducts);
+
     //  loadHandler ===> 
     const productLoadingHandler = ()=>{
         visibleProducts < filteredProduct.length 
@@ -34,12 +35,18 @@ const ProductBase = ({categories, search}) => {
                     ))
                 }
             </div>
-            <div className="w-auto my-5 border py-5 flex items-center justify-center">
+            <div className="w-auto my-5  py-5 flex items-center justify-center">
+                <div className='w-auto border-2 rounded-full p-0.5 border-purple-400'>
                 <button
-                className='btn btn-wide text-lg bg-transparent '
+                className='btn btn-wide text-lg bg-purple-800 text-purple-100 uppercase  py-6 rounded-full '
                 onClick={productLoadingHandler} 
                 type="button"
-                >{visibleProducts < filteredProduct.length ? 'load more' : 'load less'}</button>
+                >
+                {
+                visibleProducts < filteredProduct.length ? 'load more' : 'load less'
+                }
+                </button>
+                </div>
             </div>
         </div>
     );

@@ -15,7 +15,7 @@ const Card = ({product}) => {
         <div 
         className='w-full h-auto flex flex-col items-start justify-center border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient p-4'>
             {/* product image ===> */}
-            <div className='w-full h-56 rounded-2xl bg-white overflow-hidden'>
+            <div className='w-full h-44 rounded-2xl bg-white overflow-hidden'>
                 <img className='rounded-2xl w-full h-full align-middle ' src={product_image} alt={product_title} />
             </div>
             {/* product details ===> */}
@@ -24,7 +24,7 @@ const Card = ({product}) => {
                 <div className='w-full'>
                     <h3
                     onClick={expandHandler}
-                     className={`font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-xl cursor-pointer mt-3 text-left text-black`}>
+                     className={`font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-lg cursor-pointer mt-3 text-left text-black leading-6`}>
                         { <span className={`${expand ? 'line-clamp-none':'line-clamp-1'}`}>
                             {product_title}
                         </span> }
@@ -50,7 +50,7 @@ const Card = ({product}) => {
                      </h5>
                 </div>
                 {/* detail handler */}
-                <div className='w-full mt-4'>
+                <div className='w-full mt-3'>
                     <div className='btn-gradient'>
                     <button 
                     className='btn btn-wide rounded-full w-full text-base capitalize font-bold px-16 !font-sans text-violet-500 bg-slate-100' 
@@ -62,7 +62,7 @@ const Card = ({product}) => {
                 </div>
                 {/* cart handle button */}
                 <div 
-                className='w-full mt-4'
+                className='w-full mt-3'
                 >
                     <div 
                     className='btn-gradient'
