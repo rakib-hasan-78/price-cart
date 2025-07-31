@@ -3,18 +3,68 @@ import im from '../../assets/hero.png';
 import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
 const DetailCard = () => {
     const [detail, setDetail] = useToggle();
+    const [brief, setBrief] = useToggle();
     return (
-        <div className='w-9/12 h-auto p-2 flex items-center justify-center border relative mx-auto rounded-2xl'>
-            <div className='w-full py-1 border border-red-400 flex xxs:flex-col md:flex-row items-start justify-start space-x-2'>
-                <div className='w-5/12 h-full'>
-                    <img src={im} alt="xxx" />
+        <div className='w-7/12 h-auto p-2 flex items-center justify-center border-2 border-white/40 shadow-2xs relative mx-auto rounded-2xl px-5 bg-white -translate-y-1/2'>
+            <div className='w-full py-1 flex xxs:flex-col md:flex-row items-start justify-start space-x-4'>
+                <div className='w-5/12 min-h-80 rounded-xl'>
+                    <img className='rounded-xl object-fill h-80' src={im} alt="xxx" />
                 </div>
 
                 <div className='w-7/12'>
-                    <div className='w-full h-auto flex flex-col space-y-2'>
+                    <div className='w-full h-auto flex flex-col space-y-3'>
                         <h3
                         onClick={setDetail} 
-                        className={`font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-xl cursor-pointer  text-left text-black ${detail ? 'line-clamp-none' :'line-clamp-1'}`}>apple apple dell dell  3245 dell coca-cola smartwatch smart pen and some jam & jelly</h3>
+                        className={`font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-xl cursor-pointer  text-left text-black pr-10 ${detail ? 'line-clamp-none' :'line-clamp-1'}`}>apple apple dell dell  3245 dell coca-cola smartwatch smart pen and some jam & jelly</h3>
+                        <span 
+                        className='text-black/60 font-medium text-xl'
+                        >
+                        price : $
+                        <span 
+                        className='font-normal'
+                        >
+                        455.00
+                        </span>
+                        </span>
+                        {/* stock information */}
+                        <span className='w-full'>
+                            
+                            <span 
+                            aria-disabled={true}
+                            className='border border-purple-400 text-purple-400 bg-purple-200/25 px-3 py-0.5 flex items-center justify-between w-28 rounded-full cursor-pointer'>
+                            in stock
+                            <div className='relative flex size-4 -translate-y-4 translate-x-3'>
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
+                                <span class="relative inline-flex size-4 rounded-full bg-purple-500"></span>
+                            </div>
+                            </span>
+                        
+                            {/* <span className='border border-red-400 text-red-400 bg-red-200/25 cursor-pointer px-2 py-0.5 flex items-center justify-center w-3/12 rounded-full'>
+                            out of stock
+                            </span> */}
+                        </span>
+                    </div>
+                    {/* description box  */}
+                    <div className='w-auto'>
+                        <p
+                        onClick={setBrief}
+                        className={`text-lg my-2 ${brief ? 'line-clamp-none':'line-clamp-1'} cursor-pointer transition-all font-light decoration-1 delay-75 ease-in text-black/50`}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit accusantium esse, corporis blanditiis sed eum placeat eius necessitatibus velit praesentium ut illum quae delectus eligendi molestiae. Exercitationem quam non repellat, nobis unde aspernatur deleniti et consectetur nostrum dicta velit, repudiandae, vitae ea molestias error molestiae ducimus beatae adipisci modi? Dolores, nemo? Minima tempora culpa nemo nisi velit, nihil iste pariatur? Exercitationem deleniti autem nihil? Aperiam quia dolore doloremque molestias natus?
+
+                        </p>
+                    </div>
+                    {/* specification */}
+                    <div className='w-full h-auto flex flex-col items-start justify-start flex-wrap'>
+                        <h5 className='font-semibold'>specifications:</h5>
+                        <div>
+                            <ul>
+                                <li className='text-black/60 font-light text-lg'>01. Lorem ipsum dolor sit.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    {/* product rating */}
+                    <div className='w-auto h-auto flex items-start justify-start'>
+                        <h5>rating</h5>
+                        
                     </div>
                 </div>
             </div>

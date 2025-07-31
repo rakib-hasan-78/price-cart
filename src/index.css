@@ -18,7 +18,7 @@
   /* --- Correct way to define font families --- */
   --font-family-sans: 'Sora', theme(fontFamily.sans);
   --font-family-serif: 'Ancizar Sans', theme(fontFamily.serif);
-  
+   --animate-wiggle: ping 2s ease-in-out infinite;
 }
 
 @layer base {
@@ -88,4 +88,5 @@
   .secondary-bg-gradient {
     @apply rounded-2xl border border-white outline-0 bg-gradient-to-r from-purple-300 via-violet-200/50 to-pink-400/40 bg-blend-color-burn backdrop-blur-lg;
   }
+
 }
