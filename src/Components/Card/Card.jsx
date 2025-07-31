@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CiHeart } from "react-icons/ci";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsCart3 } from "react-icons/bs";
+import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
 
 const Card = ({product}) => {
     const {product_title, product_image, price} = product;
-    const [expand, setExpand] = useState(false);
-
-    const expandHandler = ()=>{
-        setExpand(!expand);
-    }
+    const [expand, setExpand] = useToggle();
 
     return (
         <div 
@@ -23,7 +20,7 @@ const Card = ({product}) => {
                 {/* product title */}
                 <div className='w-full'>
                     <h3
-                    onClick={expandHandler}
+                    onClick={setExpand}
                      className={`font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-lg cursor-pointer mt-3 text-left text-black leading-6`}>
                         { <span className={`${expand ? 'line-clamp-none':'line-clamp-1'}`}>
                             {product_title}

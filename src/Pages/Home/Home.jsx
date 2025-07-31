@@ -10,7 +10,7 @@ const Home = () => {
     const [search, setSearch]= useState('')
     return (
         <div className={`w-full min-h-full flex flex-col items-center`}>
-           <Hero>
+           <Hero className={`xxs:h-[300px] lg:h-[600px]`}>
             {
                <div className='bg-hero'>
 

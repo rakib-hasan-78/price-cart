@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Hero = ({children}) => {
+const Hero = ({children , className}) => {
     return (
         <div 
-        className={`hero bg-hero xxs:h-[300px] lg:h-[600px] custom-bg items-start relative`}>  
+        className={`hero bg-hero custom-bg items-start relative ${className}`}>  
             {children}
         </div>
     );
