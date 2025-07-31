@@ -1,4 +1,9 @@
 import React from 'react';
+import { CiHeart } from "react-icons/ci";
+import { BsCart3, BsBookmark  } from "react-icons/bs";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { GiReturnArrow } from "react-icons/gi";
+
 import im from '../../assets/hero.png';
 import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
 import Rating from './../Rating/Rating';
@@ -65,7 +70,33 @@ const DetailCard = () => {
                     {/* product rating */}
                     <div className='w-auto h-auto flex items-start justify-start space-x-3'>
                         <h5>rating</h5>
-                        <Rating rating={4.38} />
+                        <div className='w-auto flex items-center space-x-2'>
+                            <Rating rating={4.38} />
+                            <div className='w-12 bg-pink-400 flex items-center justify-center rounded-full text-pink-100 font-medium'>4.33</div>
+                        </div>
+                    </div>
+                    {/* action button blocks ===> */}
+                    <div className='w-auto h-auto flex flex-row items-center justify-start space-x-3'>
+                        {/* cart button */}
+                        <div className='flex items-center justify-start border space-x-3 my-3 rounded-full'>
+                        <button className="btn btn-square bg-transparent border-none">
+                        <AiOutlinePlus />
+                        </button>
+                        <BsCart3 />
+                        <button className="btn btn-square bg-transparent border-none">
+                        <AiOutlineMinus />
+                        </button>
+                        </div>
+                        {/* wishlist button  & return button*/}
+                        <div className='w-auto h-auto flex items-center justify-start space-x-3'>
+                        {/* wishlist button */}
+                        <button title='wishlist' className='btn btn-circle bg-purple-400 text-lg text-purple-100 shadow-none border border-purple-500'>
+                        <BsBookmark />
+                        </button>
+                        <button title='return page' className='btn btn-circle bg-rose-400 text-lg text-rose-100 shadow-none border border-rose-500'>
+                        <GiReturnArrow />
+                        </button>
+                        </div>
                     </div>
                 </div>
             </div>

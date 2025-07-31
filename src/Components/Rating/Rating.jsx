@@ -10,13 +10,13 @@ const Rating = ({ rating = 0, size = 'w-6 h-6', className = '' }) => {
       <div key={i} className={`relative ${size}`}>
         {/* Empty Star */}
         <div
-          className={`mask mask-star-2 ${size} absolute inset-0 border border-yellow-400 bg-gray-300/60`}
+          className={`mask mask-star-2 ${size} absolute inset-0 border border-purple-400 bg-gray-300/60`}
         ></div>
 
         {/* Filled Star */}
         {fill > 0 && (
           <div
-            className={`mask mask-star-2 ${size} absolute inset-0 bg-yellow-400`}
+            className={`mask mask-star-2 ${size} absolute inset-0 bg-purple-400`}
             style={{
               clipPath: `polygon(0 0, ${fill * 100}% 0, ${fill * 100}% 100%, 0 100%)`,
             }}
