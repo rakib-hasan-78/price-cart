@@ -1,6 +1,7 @@
 import React from 'react';
 import im from '../../assets/hero.png';
 import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
+import Rating from './../Rating/Rating';
 const DetailCard = () => {
     const [detail, setDetail] = useToggle();
     const [brief, setBrief] = useToggle();
@@ -62,9 +63,9 @@ const DetailCard = () => {
                         </div>
                     </div>
                     {/* product rating */}
-                    <div className='w-auto h-auto flex items-start justify-start'>
+                    <div className='w-auto h-auto flex items-start justify-start space-x-3'>
                         <h5>rating</h5>
-                        
+                        <Rating rating={4.38} />
                     </div>
                 </div>
             </div>
