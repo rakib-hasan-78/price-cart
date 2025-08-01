@@ -11,7 +11,7 @@ const Nav = ({isScroll}) => {
 
     return (
         <div 
-        className={`navbar ${isScroll ? 'rounded-t-none shadow-2xl':'lg:rounded-t-xl' }  border-none shadow-none mb-0 ${location.pathname==='/'?'custom-bg':'bg-transparent'}`}>
+        className={`navbar ${isScroll ? 'rounded-t-none shadow-2xl':'lg:rounded-t-xl' }  border-none shadow-none mb-0 ${location.pathname==='/'?'custom-bg':'secondary-bg-gradient-nav'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

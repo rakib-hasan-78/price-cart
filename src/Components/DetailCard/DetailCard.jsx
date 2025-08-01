@@ -11,10 +11,10 @@ const DetailCard = () => {
     const [detail, setDetail] = useToggle();
     const [brief, setBrief] = useToggle();
     return (
-        <div className='w-7/12 h-auto p-2 flex items-center justify-center border-2 border-white/40 shadow-2xs relative mx-auto rounded-2xl px-5 bg-white -translate-y-1/2'>
+        <div className='w-7/12 h-auto p-2 flex items-center justify-center border-2 border-white/40 shadow-2xs relative mx-auto rounded-2xl px-5 bg-white -translate-y-1/5'>
             <div className='w-full py-1 flex xxs:flex-col md:flex-row items-start justify-start space-x-4'>
-                <div className='w-5/12 min-h-80 rounded-xl'>
-                    <img className='rounded-xl object-fill h-80' src={im} alt="xxx" />
+                <div className='w-5/12 min-h-96 rounded-xl'>
+                    <img className='rounded-xl object-fill min-h-[420px]' src={im} alt="xxx" />
                 </div>
 
                 <div className='w-7/12'>
@@ -37,7 +37,7 @@ const DetailCard = () => {
                             
                             <span 
                             aria-disabled={true}
-                            className='border border-purple-400 text-purple-400 bg-purple-200/25 px-3 py-0.5 flex items-center justify-between w-28 rounded-full cursor-pointer'>
+                            className='border border-purple-400 text-purple-400 bg-purple-200/25 px-3  flex items-center justify-between w-28 rounded-full cursor-pointer'>
                             in stock
                             <div className='relative flex size-4 -translate-y-4 translate-x-3'>
                                 <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
@@ -45,8 +45,14 @@ const DetailCard = () => {
                             </div>
                             </span>
                         
-                            {/* <span className='border border-red-400 text-red-400 bg-red-200/25 cursor-pointer px-2 py-0.5 flex items-center justify-center w-3/12 rounded-full'>
+                            {/* <span className='border border-red-400 text-red-400 bg-red-200/25 cursor-pointer px-2 py-0.5 flex items-center justify-between w-3/12 rounded-full text-[12px]'>
                             out of stock
+                            <div className='relative flex size-3 -translate-y-3 translate-x-3'>
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-400 opacity-75">
+                                </span>
+                                <span class="relative inline-flex size-3 rounded-full bg-rose-500">
+                                </span>
+                            </div>
                             </span> */}
                         </span>
                     </div>
@@ -64,6 +70,10 @@ const DetailCard = () => {
                         <div>
                             <ul>
                                 <li className='text-black/60 font-light text-lg'>01. Lorem ipsum dolor sit.</li>
+                                <li className='text-black/60 font-light text-lg'>01. Lorem ipsum dolor sit.</li>
+                                <li className='text-black/60 font-light text-lg'>01. Lorem ipsum dolor sit.</li>
+                                <li className='text-black/60 font-light text-lg'>01. Lorem ipsum dolor sit.</li>
+                                <li className='text-black/60 font-light text-lg'>01. Lorem ipsum dolor sit.</li>
                             </ul>
                         </div>
                     </div>
@@ -76,19 +86,19 @@ const DetailCard = () => {
                         </div>
                     </div>
                     {/* action button blocks ===> */}
-                    <div className='w-auto h-auto flex flex-row items-center justify-start space-x-3'>
+                    <div className='w-auto h-auto flex flex-row items-center justify-start space-x-3 my-2'>
                         {/* cart button */}
-                        <div className='flex items-center justify-start border space-x-3 my-3 rounded-full'>
+                        <div className='flex items-center justify-start border border-purple-400 space-x-3 my-3 rounded-full'>
                         <button className="btn btn-square bg-transparent border-none">
-                        <AiOutlinePlus />
+                        <AiOutlinePlus className='text-purple-400' />
                         </button>
-                        <BsCart3 />
+                        <BsCart3 className='text-purple-400' />
                         <button className="btn btn-square bg-transparent border-none">
-                        <AiOutlineMinus />
+                        <AiOutlineMinus className='text-purple-400' />
                         </button>
                         </div>
                         {/* wishlist button  & return button*/}
-                        <div className='w-auto h-auto flex items-center justify-start space-x-3'>
+                        <div className='w-auto h-auto flex items-center justify-start space-x-3 '>
                         {/* wishlist button */}
                         <button title='wishlist' className='btn btn-circle bg-purple-400 text-lg text-purple-100 shadow-none border border-purple-500'>
                         <BsBookmark />

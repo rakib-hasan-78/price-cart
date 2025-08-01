@@ -88,5 +88,8 @@
   .secondary-bg-gradient {
     @apply rounded-2xl border border-white outline-0 bg-gradient-to-r from-purple-300 via-violet-200/50 to-pink-400/40 bg-blend-color-burn backdrop-blur-lg;
   }
+  .secondary-bg-gradient-nav {
+    @apply border border-white outline-0 bg-gradient-to-r from-purple-300 via-violet-200/50 to-pink-400/40 bg-blend-color-burn backdrop-blur-lg;
+  }
 
 }
