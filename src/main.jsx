@@ -8,6 +8,7 @@ import Root from './Pages/Root/Root';
 import Error from './Pages/Error/Error';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Statistics from './Pages/Statistics/Statistics';
+import ProductDetails from './Components/ProductDetails/ProductDetails.jsx'
 
 
 const root = createBrowserRouter([
@@ -23,7 +24,9 @@ const root = createBrowserRouter([
       },
 
       {
-
+        path:'/products/:product_id',
+        loader:()=>fetch('data/data.json').then(res=>res.json()),
+        element: <ProductDetails />
       },
 
       {

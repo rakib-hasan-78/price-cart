@@ -3,11 +3,17 @@ import { CiHeart } from "react-icons/ci";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsCart3 } from "react-icons/bs";
 import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
+import { useNavigate } from 'react-router-dom';
 
 const Card = ({product}) => {
-    const {product_title, product_image, price} = product;
+    const {product_title, product_image, price, product_id} = product;
     const [expand, setExpand] = useToggle();
+    const navigateDetail = useNavigate();
 
+    const detailHandler = e =>{
+        e.preventDefault();
+        navigateDetail(`/products/${product_id}`);
+    }
     return (
         <div 
         className='w-full h-auto flex flex-col items-start justify-center border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient p-4'>
@@ -49,7 +55,8 @@ const Card = ({product}) => {
                 {/* detail handler */}
                 <div className='w-full mt-3'>
                     <div className='btn-gradient'>
-                    <button 
+                    <button
+                    onClick={detailHandler} 
                     className='btn btn-wide rounded-full w-full text-base capitalize font-bold px-16 !font-sans text-violet-500 bg-slate-100' 
                     type="button"
                     >

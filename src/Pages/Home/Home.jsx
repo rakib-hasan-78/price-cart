@@ -10,11 +10,11 @@ const Home = () => {
     const [search, setSearch]= useState('')
     return (
         <div className={`w-full min-h-full flex flex-col items-center`}>
-           <Hero className={`xxs:h-[300px] lg:h-[600px]`}>
+           <Hero className={`xxs:h-[360px] lg:h-[600px]`}>
             {
                <div className='bg-hero'>
 
-                <div className='w-full xl:px-20 2xl:px-40 '>
+                <div className='w-full xs:px-4 xl:px-20 2xl:px-40 xxs:pt-8  lg:pt-0 '>
                     <h1 className='text-bg hero-title'> Upgrade Your Tech Accessorize with Gadget Heaven Accessories </h1>
                     
                     <p className="hero-brief">
