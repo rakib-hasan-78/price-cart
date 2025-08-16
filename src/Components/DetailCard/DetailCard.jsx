@@ -30,7 +30,7 @@ const DetailCard = () => {
         <div className='xxs:w-full lg:w-7/12 h-auto p-2 flex items-center justify-center border-2 border-white/40 shadow-2xs relative mx-auto rounded-2xl px-5 bg-white -translate-y-1/5'>
             <div className='w-full py-1 flex xxs:flex-col md:flex-row items-start justify-start space-x-4'>
                 <div className='xxs:w-full lg:w-5/12 xxs:min-h-64 lg:min-h-[420px] rounded-xl'>
-                    <img className='rounded-xl object-fill w-full lg:min-h-[420px]' src={product_image} alt={`image of : ${product_title}`} />
+                    <img className='rounded-xl object-fill w-full min-h-full' src={product_image} alt={`image of : ${product_title}`} />
                 </div>
 
                 <div className='w-7/12'>
