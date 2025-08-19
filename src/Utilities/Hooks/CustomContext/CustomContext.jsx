@@ -51,7 +51,81 @@ const CustomContext = ({children}) => {
         }
         
     }
-    const value = {cart, wishList, cartHandler};
+    const wishListHandler =(e, product)=>{
+        e.preventDefault();
+        const cartProduct = cart.find(item=> item.product_id === product.product_id);
+        const wishListProduct = wishList.find(item=> item.product_id === product.product_id);
+        // if product on the cart products ===>
+        if (cartProduct) {
+            toast.error(`${product.product_title} Already on Cart List!`,{
+                position:'top-center',
+            })
+            return;
+        }
+        else if (wishListProduct) {
+            toast.info(`${product.product_title} Already On The Wish List!`, {
+                position:'top-center',
+            });
+            return;
+        }
+        else {
+            toast.success(`${product.product_title } Added To Wish List!`, {
+                position:'top-center',
+            });
+            setWishList([...wishList, product]);
+            return;
+        }
+
+    }
+    // decrement handler ===> 
+    const decrementHandler =(e,product) => {
+        e.preventDefault();
+        const found = cart.find(item=> item.product_id === product.product_id);
+        if (!found) {
+            toast.error(`${product.product_title} Not in Cart List!`, {
+                position:'top-center',
+            });
+            return;
+        } else {
+            const updatedItem = cart.map(item=>{
+                if (item.product_id === product.product_id) {
+                    if (item.quantity>1) {
+                        toast.info(`${product.product_title} Remains ${item.quantity - 1} Units.`, {
+                            position:'top-center',
+                        });
+                        return {...item , quantity:item.quantity-1}
+                    } else {
+                        toast.info(`${product.product_title} Removed From The List!`, {
+                            position:'top-center',
+                        });
+                        return null;
+                    }
+
+                }
+                return item;
+            }).filter(Boolean);
+
+            setCart(updatedItem);
+        }
+    }
+    const removeHandler =(e, product)=>{
+        e.preventDefault();
+        const cartProduct = cart.some(item=>item.product_id===product.product_id);
+        const wishListProduct = wishList.some(item=> item.product_id===product.product_id);
+        if (cartProduct) {
+            const removedProduct = cart.filter(item=>item.product_id !== product.product_id);
+            setCart(removedProduct);
+            return;
+        }
+
+        if (wishListProduct) {
+            const removedProduct = wishList.filter(item=> item.product_id !== product.product_id);
+            setWishList(removedProduct);
+            return;
+        }
+
+    }
+    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler};
     return (
         <ProductManagement.Provider value={value}>
             {children}
