@@ -108,6 +108,37 @@ const CustomContext = ({children}) => {
             setCart(updatedItem);
         }
     }
+    const moveHandler = (e, product)=>{
+        e.preventDefault();
+        const targetedWishList = wishList.find(item=> item.product_id === product.product_id);
+        const targetedCartList = cart.find(item=>item.product_id === product.product_id);
+        if (targetedWishList) {
+            if (product.availability) {
+                toast.success(`${product.product_title} Moved To Cart List`, {
+                position:'top-center',
+            });
+            setCart([...cart, {...product , quantity:1}]);
+            const movedProduct = wishList.filter(item =>item.product_id !== product.product_id);
+            setWishList(movedProduct);
+            return;
+            }
+            else {
+                toast.error(`${product.product_title} Is Out Of The Stock!`, {
+                    position:'top-center',
+                });
+                return;
+            }
+        }
+        if (targetedCartList) {
+            setWishList([...wishList, product]);
+            const removedItem = cart.filter(item => item.product_id !== product.product_id);
+            setCart(removedItem);
+            toast.info(`${product.product_title} Moved To Wish List !`, {
+                position:'top-center',
+            });
+            return;
+        }
+    }
     const removeHandler =(e, product)=>{
         e.preventDefault();
         const cartProduct = cart.some(item=>item.product_id===product.product_id);
@@ -125,7 +156,7 @@ const CustomContext = ({children}) => {
         }
 
     }
-    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler};
+    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler};
     return (
         <ProductManagement.Provider value={value}>
             {children}
