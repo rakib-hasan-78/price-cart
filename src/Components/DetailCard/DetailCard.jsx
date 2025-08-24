@@ -8,6 +8,7 @@ import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
 import Rating from './../Rating/Rating';
 import { useLoaderData,  useParams } from 'react-router-dom';
 import useReturn from '../../Utilities/Hooks/Return/Return';
+import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 const DetailCard = () => {
     const [detail, setDetail] = useToggle();
     const [brief, setBrief] = useToggle();
@@ -15,6 +16,7 @@ const DetailCard = () => {
     const detailData = useLoaderData();
     const {product_id} = useParams();
     const product = detailData.find(data=>data.product_id === product_id);
+    const {decrementHandler, cartHandler, wishListHandler} = useProduct();
     const 
     {
         product_title,
@@ -112,18 +114,24 @@ const DetailCard = () => {
                     <div className='w-auto h-auto flex flex-row items-center justify-start space-x-3 my-2'>
                         {/* cart button */}
                         <div className='flex items-center justify-start border border-purple-400 space-x-3 my-3 rounded-full'>
-                        <button className="btn btn-square bg-transparent border-none">
+                        <button 
+                        onClick={(e)=>cartHandler(e, product)}
+                        className="btn btn-square bg-transparent border-none">
                         <AiOutlinePlus className='text-purple-400' />
                         </button>
                         <BsCart3 className='text-purple-400' />
-                        <button className="btn btn-square bg-transparent border-none">
+                        <button 
+                        onClick={(e)=>decrementHandler(e, product)}
+                        className="btn btn-square bg-transparent border-none">
                         <AiOutlineMinus className='text-purple-400' />
                         </button>
                         </div>
                         {/* wishlist button  & return button*/}
                         <div className='w-auto h-auto flex items-center justify-start space-x-3 '>
                         {/* wishlist button */}
-                        <button title='wishlist' className='btn btn-circle bg-purple-400 text-lg text-purple-100 shadow-none border border-purple-500'>
+                        <button
+                        onClick={(e)=>wishListHandler(e, product)}
+                         title='wishlist' className='btn btn-circle bg-purple-400 text-lg text-purple-100 shadow-none border border-purple-500'>
                         <BsBookmark />
                         </button>
                         <button

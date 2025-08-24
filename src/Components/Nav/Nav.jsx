@@ -3,12 +3,13 @@ import { useLocation } from 'react-router-dom';
 import { BsCart3 } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import NavLinks from '../NavLinks/NavLinks';
+import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
 
 const Nav = ({isScroll}) => {
     const location = useLocation();
     const preferenceBG = location.pathname==='/';
-
+    const {cart, wishList} = useProduct();
     return (
         <div 
         className={`navbar ${isScroll ? 'rounded-t-none shadow-2xl':'lg:rounded-t-xl' }  border-none shadow-none mb-0 ${location.pathname==='/'?'custom-bg':'secondary-bg-gradient-nav'}`}>
@@ -36,7 +37,11 @@ const Nav = ({isScroll}) => {
                         <div tabIndex={0} role="button" className={`btn ${preferenceBG ? 'bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))]':'bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_theme(colors.purple.800)_37.3%,_theme(colors.indigo.900)_73.5%)] bg-blend-color  text-white backdrop-blur-md bg-white/10'} btn-circle`}>
                             <div className={`indicator`}>
                             <BsCart3 className='text-xl'/>
-                            <span className="badge badge-sm indicator-item bg-red-400 text-red-50">8</span>
+                            {
+                                cart.length>0 && (
+                                <span className="badge badge-sm indicator-item bg-red-400 text-red-50">{cart.length}</span>
+                                )
+                            }
                             </div>
                         </div>
                         <div
@@ -55,7 +60,11 @@ const Nav = ({isScroll}) => {
                         <div tabIndex={0} role="button" className={`btn ${preferenceBG ? 'bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))]':'bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_theme(colors.purple.800)_37.3%,_theme(colors.indigo.900)_73.5%)] bg-blend-color  text-white backdrop-blur-md bg-white/10'} btn-circle`}>
                             <div className="indicator">
                             <CiHeart className='text-2xl' />
-                            <span className="badge badge-sm indicator-item bg-red-400 text-red-100">8</span>
+                            {
+                                wishList.length>0 &&(
+                                <span className="badge badge-sm indicator-item bg-red-400 text-red-100">{wishList.length}</span>
+                                )
+                            }
                             </div>
                         </div>
                         <div

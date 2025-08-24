@@ -4,11 +4,13 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsCart3 } from "react-icons/bs";
 import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
 import { useNavigate } from 'react-router-dom';
+import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
 const Card = ({product}) => {
     const {product_title, product_image, price, product_id} = product;
     const [expand, setExpand] = useToggle();
     const navigateDetail = useNavigate();
+    const {wishListHandler, cartHandler, decrementHandler} = useProduct();
 
     const detailHandler = e =>{
         e.preventDefault();
@@ -46,6 +48,7 @@ const Card = ({product}) => {
                         className='btn size-10 rounded-full bg-radial from-pink-400 from-40% to-fuchsia-700 btn-circle text-2xl font-bold border border-pink-50/5 text-pink-100 inset-0'
                         title='save to wishlist' 
                         type="button"
+                        onClick={(e)=>wishListHandler(e, product)}
                         >
                         <CiHeart />
                         </button>
@@ -76,6 +79,7 @@ const Card = ({product}) => {
                          >
                             {/* increment button */}
                             <button
+                            onClick={(e)=>cartHandler(e, product)}
                             className='btn btn-xs btn-circle text-xl min-h-0 h-6 w-6  border-none font-bold text-violet-500 '
                              type="button"
                              >
@@ -94,6 +98,7 @@ const Card = ({product}) => {
                             </span>
                             {/* decrement button */}
                             <button
+                            onClick={(e)=>decrementHandler(e, product)}
                             className='btn btn-circle text-xl h-6 w-6 border-none font-bold text-violet-500'
                              type="button"
                              >

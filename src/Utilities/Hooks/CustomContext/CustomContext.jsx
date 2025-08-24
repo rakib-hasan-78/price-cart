@@ -69,10 +69,10 @@ const CustomContext = ({children}) => {
             return;
         }
         else {
+            setWishList([...wishList, product]);
             toast.success(`${product.product_title } Added To Wish List!`, {
                 position:'top-center',
             });
-            setWishList([...wishList, product]);
             return;
         }
 
