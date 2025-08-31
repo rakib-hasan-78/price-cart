@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Hero from '../../Components/Hero/Hero';
 import Ribbon from './../../Components/Ribbon/Ribbon';
+import SelectedProduct from './../../Components/SelectedProduct/SelectedProduct';
 
 const Dashboard = () => {
     const [tabs, setTabs] = useState('cart');
@@ -45,7 +46,8 @@ const Dashboard = () => {
                 </div>
             }
           </Hero>
-          <Ribbon tabs={tabs} />  
+          <Ribbon tabs={tabs} />
+          <SelectedProduct />  
         </>
     );
 };
