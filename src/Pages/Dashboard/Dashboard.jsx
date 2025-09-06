@@ -47,7 +47,7 @@ const Dashboard = () => {
             }
           </Hero>
           <Ribbon tabs={tabs} />
-          <SelectedProduct />  
+          <SelectedProduct tabs={tabs} />  
         </>
     );
 };
