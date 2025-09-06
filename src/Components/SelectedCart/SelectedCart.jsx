@@ -9,7 +9,7 @@ import { MdMoveUp } from "react-icons/md";
 const SelectedCart = ({tabs}) => {
     const [asset, setAsset] = useToggle()
     return (
-        <div className='w-full lg:w-8/12 py-4 px-4 h-auto flex flex-col lg:flex-row items-start justify-between border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient'>
+        <div className='w-full sm:w-7/12 md:w-5/12 lg:w-8/12 py-4 px-4 h-auto flex flex-col lg:flex-row items-start justify-between border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient'>
             <div className='xxs:w-full lg:w-6/12 flex flex-col lg:flex-row items-start justify-start xxs:space-x-0 lg:space-x-2.5 xxs:space-y-3 lg:space-y-0'>
                 <div className='xxs:w-full lg:w-30 xxs:h-56 lg:h-30 rounded-lg'>
                     <img className='rounded-lg object-cover align-middle' src={tiger} />
