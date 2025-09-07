@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Hero from './../../Components/Hero/Hero';
 import DisplayProduct from './../../Components/DisplayProduct/DisplayProduct';
 import Search from './../../Components/Search/Search';
@@ -7,7 +7,17 @@ import Products from './../../Components/Products/Products';
 
 
 const Home = () => {
-    const [search, setSearch]= useState('')
+    const [search, setSearch]= useState('');
+    const productSection = useRef(null);
+
+    const shopProductHandler = e=>{
+        e.preventDefault();
+        if (productSection.current) {
+
+            productSection.current.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+    }
+
     return (
         <div className={`w-full min-h-full flex flex-col items-center`}>
            <Hero className={`xxs:h-[360px] lg:h-[600px]`}>
@@ -23,14 +33,22 @@ const Home = () => {
 
                 </div>
                     <div className='xxs:w-11/12 lg:w-2/12 flex items-center justify-center xxs:border-1 xl:border-2 rounded-full xxs:my-3 md:my-2 lg:my-3 p-1.5'>
-                    <button className='btn-hero' type="button">shop now</button>
+                    <button
+                    onClick={shopProductHandler}
+                     className='btn-hero'
+                      type="button"
+                      >
+                      shop now
+                      </button>
                     </div>
                 </div>  
             }
            </Hero>
            <DisplayProduct />
            <Search search={search} setSearch={setSearch} />
-           <Products search={search} />
+           <div ref={productSection}>
+            <Products search={search} />
+           </div>
         </div>   
     );
 };

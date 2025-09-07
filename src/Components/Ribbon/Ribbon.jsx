@@ -5,10 +5,10 @@ const Ribbon = ({tabs}) => {
     const {cart, wishList} = useProduct();
 
     return (
-        <div className='w-full h-auto py-5 xxs:px-2 px-6 my-3  border flex xxs:flex-col lg:flex-row items-center justify-between'>
+        <div className='w-full h-auto py-5 xxs:px-2 px-6 my-3 flex xxs:flex-col lg:flex-row items-center justify-between'>
             <div className='xxs:w-full lg:w-auto'>
                 <h3 
-                className='font-semibold text-2xl text-black/60 xxs:text-center lg:text-left'
+                className='font-semibold text-2xl text-black/60 xxs:text-center lg:text-left text-bg'
                 >
                 {tabs === 'cart' ? 'Cart' :'Wish List'}
                 </h3>
@@ -17,7 +17,7 @@ const Ribbon = ({tabs}) => {
                 tabs==='cart'&& cart.length===0 &&
                 (
                 <div className='w-auto flex  flex-col lg:flex-row flex-wrap items-center justify-around xxs:space-y-5 lg:space-y-0 xxs:space-x-0 lg:space-x-5'>
-                <h4 className='font-semibold xxs:text-lg lg:text-2xl text-black'>total cost: $ 999.99</h4>
+                <h4 className='font-semibold xxs:text-lg lg:text-2xl text-bg'>total cost: $ 999.99</h4>
                 <div className='w-auto flex xxs:flex-col md:flex-row items-center xxs:space-y-3 md:space-y-0 md:space-x-3'>
                     <div className='btn-gradient xxs:w-11/12'>
                         <div className='w-full body-default-bg rounded-full flex items-center xxs:justify-center lg:justify-between xxs:px-4 lg:px-4 xxs:py-3 lg:py-4'>
