@@ -10,11 +10,12 @@ const Ribbon = ({tabs}) => {
                 <h3 
                 className='font-semibold text-2xl text-black/60 xxs:text-center lg:text-left text-bg'
                 >
-                {tabs === 'cart' ? 'Cart' :'Wish List'}
+                {tabs === 'cart' && cart.length >0 && 'Cart'}
+                {tabs === 'wishlist' && wishList.length >0 && 'Wishlist'}
                 </h3>
             </div>
             {
-                tabs==='cart'&& cart.length===0 &&
+                tabs==='cart'&& cart.length>0 &&
                 (
                 <div className='w-auto flex  flex-col lg:flex-row flex-wrap items-center justify-around xxs:space-y-5 lg:space-y-0 xxs:space-x-0 lg:space-x-5'>
                 <h4 className='font-semibold xxs:text-lg lg:text-2xl text-bg'>total cost: $ 999.99</h4>
