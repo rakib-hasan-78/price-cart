@@ -11,11 +11,9 @@ const Root = () => {
     return (
         <div className='w-full min-h-full'>
             <main className='xxs:pt-0 lg:pt-5'>
-            <CustomContext>
             <Header />       
             <Outlet />
             <ToastContainer />
-            </CustomContext>
             </main>
         </div>
     );

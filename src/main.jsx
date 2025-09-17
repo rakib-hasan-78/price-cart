@@ -9,6 +9,7 @@ import Error from './Pages/Error/Error';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Statistics from './Pages/Statistics/Statistics';
 import ProductDetails from './Components/ProductDetails/ProductDetails.jsx'
+import CustomContext from './Utilities/Hooks/CustomContext/CustomContext.jsx'
 
 
 const root = createBrowserRouter([
@@ -43,7 +44,9 @@ const root = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <CustomContext>
     <RouterProvider router={root} />
     {/* <App /> */}
+    </CustomContext>
   </StrictMode>,
 )
