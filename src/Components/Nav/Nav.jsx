@@ -13,10 +13,12 @@ const Nav = ({isScroll}) => {
     const {cart, wishList} = useProduct();
 
     const [drawer, setDrawer] = useState(null);
+    const [isOpen, setIsOpen] = useState(true);
 
     const navHandler = (e, type)=>{
         e.preventDefault();
         setDrawer(pre=>pre===type ? null : type);
+        setIsOpen(false);
     }
     
     return (
@@ -44,7 +46,7 @@ const Nav = ({isScroll}) => {
                 <div className="flex items-center justify-end space-x-3">
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className={`btn ${preferenceBG ? 'bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))]':'bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_theme(colors.purple.800)_37.3%,_theme(colors.indigo.900)_73.5%)] bg-blend-color  text-white backdrop-blur-md bg-white/10'} btn-circle`}>
-                            <div className={`indicator`}>
+                            <div className={`indicator z-10`}>
                             <BsCart3 className='text-xl'/>
                             {
                                 cart.length>0 && (
@@ -53,21 +55,26 @@ const Nav = ({isScroll}) => {
                             }
                             </div>
                         </div>
-                        <div
-                            tabIndex={0}
-                            className="card card-compact dropdown-content z-1 mt-3 w-52 border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl backdrop-blur-3xl nav-card-gradient">
-                            <div className="card-body">
-                            <span className="text-lg font-bold text-black">{cart.length} Items</span>
-                            <span className="text-info">Subtotal: $999</span>
-                            <div className="card-actions">
-                                <button
-                                onClick={(e)=>navHandler(e, 'cart')} 
-                                className="btn btn-primary btn-block">
-                                View cart
-                                </button>
-                            </div>
-                            </div>
-                        </div>
+                            {
+                                isOpen && (
+                                <div
+                                    tabIndex={0}
+                                    className="card card-compact dropdown-content mt-3 w-52 border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl backdrop-blur-3xl nav-card-gradient">
+                                    <div className="card-body">
+                                    <span className="text-lg font-bold text-black">{cart.length} Items</span>
+                                    <span className="text-info">Subtotal: $999</span>
+                                    <div className="card-actions">
+                                        <button
+                                        onClick={(e)=>navHandler(e, 'cart')} 
+                                        className="btn btn-primary btn-block">
+                                        View cart
+                                        </button>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                )
+                            }
                     </div>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className={`btn ${preferenceBG ? 'bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))]':'bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_theme(colors.purple.800)_37.3%,_theme(colors.indigo.900)_73.5%)] bg-blend-color  text-white backdrop-blur-2xl bg-white/10'} btn-circle`}>
@@ -80,25 +87,40 @@ const Nav = ({isScroll}) => {
                             }
                             </div>
                         </div>
-                        <div
-                            tabIndex={0}
-                            className="card card-compact dropdown-content z-1 mt-3 w-52 border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl backdrop-blur-3xl nav-card-gradient">
-                            <div className="card-body">
-                            <span className="text-lg font-bold text-black">{wishList.length} Items</span>
-                            <span className="text-info">Subtotal: $999</span>
-                            <div className="card-actions">
-                                <button
-                                onClick={(e)=>navHandler(e, 'wishlist')} 
-                                className="btn btn-primary btn-block">
-                                View wishlist
-                                </button>
-                            </div>
-                            </div>
-                        </div>
+                        {
+                            isOpen && (
+                                <div
+                                    tabIndex={0}
+                                    className="card card-compact dropdown-content z-1 mt-3 w-52 border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl backdrop-blur-3xl nav-card-gradient">
+                                    <div className="card-body">
+                                    <span className="text-lg font-bold text-black">{wishList.length} Items</span>
+                                    <span className="text-info">Subtotal: $999</span>
+                                    <div className="card-actions">
+                                        <button
+                                        onClick={(e)=>navHandler(e, 'wishlist')} 
+                                        className="btn btn-primary btn-block">
+                                        View wishlist
+                                        </button>
+                                    </div>
+                                    </div>
+                                </div>
+
+                            )
+                        }
                     </div>
                 </div>
             </div>
-            <NavProduct drawer={drawer} />
+            {
+                drawer && (
+                <NavProduct 
+                drawer={drawer}
+                setDrawer={setDrawer}
+                setIsOpen = {setIsOpen}
+
+                />
+
+                )
+            }
         </div>
     );
 };

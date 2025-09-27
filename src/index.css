@@ -90,10 +90,12 @@
   }
 .secondary-bg-gradient-nav {
   @apply 
-    border border-white outline-0 
-    bg-gradient-to-r from-purple-300/30 via-violet-200/30 to-pink-400/30 
-    backdrop-blur-2xl;
+    border border-slate-100
+    bg-gradient-to-r from-purple-500/40 via-violet-700/30 to-pink-400/30
+    rounded-xl shadow-xl
+    backdrop-blur-2xl backdrop-saturate-150;
 }
+
 
   .nav-card-gradient{
     @apply bg-radial from-fuchsia-900/80 via-transparent to-violet-700/70 backdrop-blur-2xl bg-blend-color-dodge rounded-2xl;
