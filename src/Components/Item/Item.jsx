@@ -1,0 +1,78 @@
+import React from 'react';
+import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import { MdMoveUp } from 'react-icons/md';
+import { VscTrash } from 'react-icons/vsc';
+
+
+const Item = ({item, drawer}) => {
+    const [toggle, setToggle] = useToggle();
+    return (
+        <div 
+        className='w-11/12 py-1.5 rounded-xl bg-gradient-to-r from-purple-600/90 via-violet-700/90 to-pink-400/90 border border-pink-100 backdrop-blur-2xl bg-blend-color-dodge flex items-center justify-start space-x-4'>
+            <div className='flex items-center justify-start space-x-1 p-2 w-60'>
+                <div className='w-10 h-10 rounded-xl'>
+                    <img
+                    className='rounded-md' 
+                    src={item.product_image} alt={item.product_title} />
+                </div>
+                <div className='flex items-start justify-start flex-col text-violet-100'>
+                    <h3
+                    onClick={setToggle}
+                     className={`text-[13px] ${toggle ? 'line-clamp-none':'line-clamp-1'} cursor-pointer font-bold`}
+                     >
+                     {item.product_title}
+                     </h3>
+                     <p className='text-[9px]'>price: $ {item.price}</p>
+                     <p className='text-[9px]'>shipping coast: $ {item.shipping_charge}</p>
+                </div>
+            </div>
+            {/* if it shows cart */}
+
+            {
+                drawer === 'cart' && (
+                    <div 
+                    className='flex items-center justify-center self-center space-x-2'
+                    >
+                        
+                            <button 
+                                className='btn btn-xs btn-circle text-xl min-h-0 h-4 w-4  border-none font-bold text-violet-500 '
+                                type="button">
+                                <AiOutlineMinus />
+                                </button>
+                                <span 
+                                className='font-semibold xxs:text-xs text-white'>01</span>
+                                <button 
+                                className='btn btn-xs btn-circle text-xl min-h-0 h-4 w-4  border-none font-bold text-violet-500 '
+                                type="button"
+                                >
+                                <AiOutlinePlus />
+                                </button>
+                        
+                    </div>
+                )
+            }
+            {/* purchase price including shipping charge ===> */}
+            {
+                drawer === 'cart' && (
+                    <div>   
+                        <span className='text-xs text-white font-bold'> $ 1234.54 </span>
+                    </div>
+                )
+            }
+            {/* interaction button */}
+            <div className='flex items-center justify-center space-x-2'>
+                <button
+                title={drawer === 'cart' ? 'transfer to wishlist':'transfer to cart'} 
+                className="btn btn-circle">
+                <MdMoveUp />
+                </button>
+                <button className="btn btn-circle">
+                <VscTrash />
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default Item;

@@ -9,7 +9,7 @@ const NavProductAnimation = ({drawer}) => {
     return (
         <div className='flex flex-col items-center justify-center'>
             <h3 className='text-2xl font-black  text-orange-600'> No Product in {result}</h3>
-            <div className='w-64 h-64'>
+            <div className='w-40 h-40'>
                 {/* <DotLottieReact
                 src='https://lottie.host/fea3b89a-07cb-444c-bda1-c825cac4690a/PX7UPqmx1S.lottie'
                 autoplay

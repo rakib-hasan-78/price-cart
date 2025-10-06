@@ -2,50 +2,57 @@ import React from 'react';
 import { LuX } from 'react-icons/lu';
 import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 import NavProductAnimation from '../NavProductAnimation/NavProductAnimation';
+import Item from '../Item/Item';
 
-const NavProduct = ({drawer, setDrawer, setIsOpen}) => {
-    const {cart} = useProduct()
-    const cancelHandler =(e)=>{
-        e.preventDefault();
-        setDrawer(null);
-        setIsOpen(true)
-    }
+const NavProduct = ({ drawer, setDrawer, setIsOpen }) => {
+  const { cart, wishList } = useProduct();
 
-    return (
-        <div 
-        className='absolute z-30 right-0 top-16 xxs:w-full lg:w-5/12 flex flex-col items-center justify-center space-y-3 rounded-xl secondary-bg-gradient-nav'>
-            <div 
-            className='w-full h-auto p-1.5 flex items-center justify-end'
-            >
-            <span
-            onClick={cancelHandler}
-            className='text-3xl cursor-pointer font-black transition-all delay-150 ease-in-out text-pink-400 hover:text-pink-600 rotate-0 hover:rotate-180'
-            >
-                <LuX />
-            </span>
-            </div>
-            <div 
-            className='w-full py-2 flex flex-col items-center justify-center space-y-2'>
-                {
-                    drawer === 'cart' && (
-                        cart.length>0 ? 
-                            'mmm'
-                        
-                         : 
-                        
-                        <NavProductAnimation drawer={drawer} />
-                        
-                    ) 
+  const cancelHandler = (e) => {
+    e.preventDefault();
+    setDrawer(null);
+    setIsOpen(true);
+  };
 
-                }
-                {
-                    drawer === 'wishlist' && 'hello:wishlist' 
+  return (
+    <div
+      className='absolute z-30 right-0 top-16 xxs:w-full lg:w-5/12 flex flex-col items-center justify-center space-y-3 rounded-xl secondary-bg-gradient-nav backdrop-blur-lg bg-blend-color-dodge h-80'
+    >
+      {/* Close Button */}
+      <div className='w-full p-1.5 flex items-center justify-end'>
+        <span
+          onClick={cancelHandler}
+          className='text-3xl cursor-pointer font-black transition-all duration-150 ease-in-out text-pink-400 hover:text-pink-600 hover:rotate-180'
+        >
+          <LuX />
+        </span>
+      </div>
 
-                }
-            </div>
-        </div>
-    );
+      {/* Scrollable Items Container */}
+      <div
+        className='w-full h-64 py-3 flex flex-col items-center justify-start space-y-2 overflow-y-auto rounded-lg px-2'
+      >
+        {drawer === 'cart' && (
+          cart.length > 0 ? (
+            cart.map((item) => (
+              <Item key={item.product_id} item={item} drawer={drawer} />
+            ))
+          ) : (
+            <NavProductAnimation drawer={drawer} />
+          )
+        )}
+
+        {drawer === 'wishlist' && (
+          wishList.length > 0 ? (
+            wishList.map((item) => (
+              <Item key={item.product_id} item={item} drawer={drawer} />
+            ))
+          ) : (
+            <NavProductAnimation drawer={drawer} />
+          )
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default NavProduct;
-
