@@ -3,10 +3,13 @@ import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { MdMoveUp } from 'react-icons/md';
 import { VscTrash } from 'react-icons/vsc';
+import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
 
 const Item = ({item, drawer}) => {
     const [toggle, setToggle] = useToggle();
+    const {getCartAmountHandler} = useProduct();
+    const [subTotal] = getCartAmountHandler(item);
     return (
         <div 
         className='xxs:w-full lg:w-11/12 xxs:py-0.5 lg:py-1.5 rounded-xl bg-gradient-to-r from-purple-600/90 via-violet-700/90 to-pink-400/90 border border-pink-100 backdrop-blur-2xl bg-blend-color-dodge flex items-center justify-start xxs:space-x-1.5 lg:space-x-4'>
@@ -41,7 +44,7 @@ const Item = ({item, drawer}) => {
                                 <AiOutlineMinus />
                                 </button>
                                 <span 
-                                className='font-semibold xxs:text-[10px] md:text-xs text-white'>01</span>
+                                className='font-semibold xxs:text-[10px] md:text-xs text-white'>{item.quantity}</span>
                                 <button 
                                 className='btn btn-xs btn-circle text-xl min-h-0 xxs:h-2 sm:h-4 xxs:w-2 sm:w-4  border-none font-bold text-violet-500 '
                                 type="button"
@@ -56,7 +59,7 @@ const Item = ({item, drawer}) => {
             {
                 drawer === 'cart' && (
                     <div className='flex items-center justify-center'>   
-                        <span className='xxs:text-[10px] sm:text-xs lg:text-sm text-white font-bold'> $ 1234.54 </span>
+                        <span className='xxs:text-[10px] sm:text-xs lg:text-sm text-white font-bold'> $ {subTotal} </span>
                     </div>
                 )
             }

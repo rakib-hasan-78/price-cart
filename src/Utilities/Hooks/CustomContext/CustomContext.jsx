@@ -165,7 +165,7 @@ const CustomContext = ({children}) => {
 
             const subTotal = Number(quantity * price).toFixed(2);
             const totalShipmentCharge = Number(quantity * shippingCost).toFixed(2);
-            const totalTaxRate = Number(quantity * TAX_RATE).toFixed(2);
+            const totalTaxRate = Number(subTotal * TAX_RATE).toFixed(2);
 
             acc.subTotal += subTotal;
             acc.totalShipmentCharge +=totalShipmentCharge;
@@ -178,7 +178,25 @@ const CustomContext = ({children}) => {
     )
     },[cart]);
 
-    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals};
+
+    const getCartAmountHandler = product =>{
+        const {quantity, price, shipping_charge:shippingCharge } = product;
+
+        const priceItem = Number(quantity * price)
+        const shippingCost = Number(quantity * shippingCharge)
+        // const taxRate = Number(TAX_RATE * priceItem).toFixed(2);
+
+        const subTotal = Number(priceItem + shippingCost)
+
+        return [
+            subTotal.toFixed(2), 
+            shippingCost.toFixed(2), 
+            priceItem.toFixed(2)
+        ];
+    }
+
+
+    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals, getCartAmountHandler};
     return (
         <ProductManagement.Provider value={value}>
             {children}
