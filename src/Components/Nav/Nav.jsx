@@ -11,6 +11,7 @@ const Nav = ({isScroll}) => {
     const location = useLocation();
     const preferenceBG = location.pathname==='/';
     const {cart, wishList} = useProduct();
+    
 
     const [drawer, setDrawer] = useState(null);
     const [isOpen, setIsOpen] = useState(true);

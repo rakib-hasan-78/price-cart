@@ -5,14 +5,28 @@ import { AiOutlineMinus } from 'react-icons/ai';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { VscTrash } from "react-icons/vsc";
 import { MdMoveUp } from "react-icons/md";
+import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
-const SelectedCart = ({tabs}) => {
-    const [asset, setAsset] = useToggle()
+const SelectedCart = ({tabs, item}) => {
+    const [asset, setAsset] = useToggle();
+    const {
+        getCartAmountHandler, 
+        cartHandler,
+        decrementHandler
+        } = useProduct();
+    const {quantity,
+           product_image,
+           product_title,
+           price,
+           shipping_charge
+          } = item
+    const [subTotal] = getCartAmountHandler(item);
+
     return (
         <div className='w-full sm:w-7/12 md:w-5/12 lg:w-8/12 py-4 px-4 h-auto flex flex-col lg:flex-row items-start justify-between border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient'>
             <div className='xxs:w-full lg:w-6/12 flex flex-col lg:flex-row items-start justify-start xxs:space-x-0 lg:space-x-2.5 xxs:space-y-3 lg:space-y-0'>
                 <div className='xxs:w-full lg:w-30 xxs:h-56 lg:h-30 rounded-lg'>
-                    <img className='rounded-lg object-cover align-middle' src={tiger} />
+                    <img className='rounded-lg object-cover align-middle' src={product_image} />
                 </div>
                 <div className='flex flex-col items-start xxs:space-y-0 lg:space-y-2'>
                     <h3
@@ -23,12 +37,12 @@ const SelectedCart = ({tabs}) => {
                         <span
                         className={`${asset ? 'line-clamp-none':'line-clamp-1'}`}
                         >
-                          the little monkey on the tree holding banana   
+                          {product_title}   
                         </span>
                     }
                     </h3>
-                    <h4 className='xxs:text-sm md:text-base'>price : $ 430.90</h4>
-                    <h5 className='xxs:text-xs md:text-sm lg:text-base'>shipping cost: $ 20.09</h5>
+                    <h4 className='xxs:text-sm md:text-base'>price : $ {price}</h4>
+                    <h5 className='xxs:text-xs md:text-sm lg:text-base'>shipping cost: $ {shipping_charge}</h5>
                 </div>
             </div>
             {
@@ -38,13 +52,15 @@ const SelectedCart = ({tabs}) => {
                         <div className='btn-gradient w-full'>
                             <div className='w-full bg-white rounded-full flex items-center justify-between px-4 py-1'>
 
-                                <button 
+                                <button
+                                onClick={(e)=>decrementHandler(e, item)} 
                                 className='btn btn-xs btn-circle text-xl min-h-0 h-6 w-6  border-none font-bold text-violet-500 '
                                 type="button">
                                 <AiOutlineMinus />
                                 </button>
-                                <span className='font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-base'>01</span>
-                                <button 
+                                <span className='font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-base'>{quantity}</span>
+                                <button
+                                onClick={(e)=>cartHandler(e, item)} 
                                 className='btn btn-xs btn-circle text-xl min-h-0 h-6 w-6  border-none font-bold text-violet-500 '
                                 type="button"
                                 >
@@ -59,7 +75,7 @@ const SelectedCart = ({tabs}) => {
                 tabs=== 'cart' && (
                     <div className='w-auto flex flex-col lg:items-center xxs:justify-start lg:justify-center  xxs:space-y-3 lg:space-y-6'>
                         <h3 className='font-semibold xxs:text-sm md:text-base lg:text-lg xl:text-base cursor-pointer text-left text-black'>price incl' shipping cost</h3>
-                        <span className='xxs:text-sm md:text-base lg:text-lg xl:text-base'>$1234</span>
+                        <span className='xxs:text-sm md:text-base lg:text-lg xl:text-base'>${subTotal}</span>
                     </div>
                 )
             }

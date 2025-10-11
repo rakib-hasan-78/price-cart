@@ -8,7 +8,12 @@ import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
 const Item = ({item, drawer}) => {
     const [toggle, setToggle] = useToggle();
-    const {getCartAmountHandler} = useProduct();
+    const {
+        getCartAmountHandler, 
+        cartHandler, 
+        decrementHandler,
+        moveHandler
+        } = useProduct();
     const [subTotal] = getCartAmountHandler(item);
     return (
         <div 
@@ -39,13 +44,15 @@ const Item = ({item, drawer}) => {
                     >
                         
                             <button 
+                                onClick={(e)=>decrementHandler(e , item)}
                                 className='btn btn-xs btn-circle text-xl min-h-0 xxs:h-2 lg:h-4 xxs:w-2 lg:w-4  border-none font-bold text-violet-500 '
                                 type="button">
                                 <AiOutlineMinus />
                                 </button>
                                 <span 
                                 className='font-semibold xxs:text-[10px] md:text-xs text-white'>{item.quantity}</span>
-                                <button 
+                                <button
+                                onClick={(e)=>cartHandler(e, item)} 
                                 className='btn btn-xs btn-circle text-xl min-h-0 xxs:h-2 sm:h-4 xxs:w-2 sm:w-4  border-none font-bold text-violet-500 '
                                 type="button"
                                 >
@@ -67,6 +74,7 @@ const Item = ({item, drawer}) => {
 
             <div className='flex items-center justify-end space-x-2 ml-auto px-2'>
                 <button
+                onClick={(e)=>moveHandler(e, item)}
                 title={drawer === 'cart' ? 'transfer to wishlist':'transfer to cart'} 
                 className="btn btn-circle xxs:w-4 lg:w-8 xxs:h-4 lg:h-8 xxs:p-0.5 lg:p-0 ">
                 <MdMoveUp />
