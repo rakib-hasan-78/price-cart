@@ -3,6 +3,7 @@ import { LuX } from 'react-icons/lu';
 import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 import NavProductAnimation from '../NavProductAnimation/NavProductAnimation';
 import Item from '../Item/Item';
+import Invoice from '../Invoice/Invoice';
 
 const NavProduct = ({ drawer, setDrawer, setIsOpen }) => {
   const { cart, wishList } = useProduct();
@@ -15,7 +16,7 @@ const NavProduct = ({ drawer, setDrawer, setIsOpen }) => {
 
   return (
     <div
-      className='absolute z-30 right-0 top-16 xxs:w-full lg:w-5/12 flex flex-col items-center justify-center space-y-3 rounded-xl secondary-bg-gradient-nav backdrop-blur-lg bg-blend-color-dodge h-80'
+      className='absolute secondary-bg-gradient-nav backdrop-blur-lg bg-blend-color-dodge z-50 right-0 top-16 xxs:w-full lg:w-5/12 flex flex-col items-center justify-center space-y-3 rounded-xl blur-glass'
     >
       {/* Close Button */}
       <div className='w-full p-1.5 flex items-center justify-end'>
@@ -51,6 +52,11 @@ const NavProduct = ({ drawer, setDrawer, setIsOpen }) => {
           )
         )}
       </div>
+        {
+          drawer==='cart' && cart.length>0 &&(
+            <Invoice />
+          )
+        }
     </div>
   );
 };

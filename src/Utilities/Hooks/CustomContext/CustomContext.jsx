@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const ProductManagement = createContext();
@@ -7,6 +7,7 @@ export const useProduct = ()=> useContext(ProductManagement);
 const CustomContext = ({children}) => {
     const [cart, setCart] =  useState([]);
     const [wishList , setWishList] = useState([]);
+    const TAX_RATE = 0.125;
 
     const cartHandler = (e,product) =>{
         e.preventDefault();
@@ -156,7 +157,28 @@ const CustomContext = ({children}) => {
         }
 
     }
-    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler};
+    const totals = useMemo(()=>{
+        return cart.reduce((acc, item)=>{
+            const price = Number(item.price) || 0;
+            const shippingCost = Number(item.shipping_charge) || 0;
+            const quantity = Number(item.quantity) || 1;
+
+            const subTotal = Number(quantity * price).toFixed(2);
+            const totalShipmentCharge = Number(quantity * shippingCost).toFixed(2);
+            const totalTaxRate = Number(quantity * TAX_RATE).toFixed(2);
+
+            acc.subTotal += subTotal;
+            acc.totalShipmentCharge +=totalShipmentCharge;
+            acc.totalTaxRate += totalTaxRate;
+            acc.grandTotal = Number(acc.subTotal + acc.totalShipmentCharge + acc.totalTaxRate).toFixed(2);
+            return acc;
+
+        }, 
+        {subTotal:0, totalShipmentCharge:0, totalTaxRate:0, grandTotal:0},
+    )
+    },[cart]);
+
+    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals};
     return (
         <ProductManagement.Provider value={value}>
             {children}

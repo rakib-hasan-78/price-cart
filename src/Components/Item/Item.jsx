@@ -62,7 +62,7 @@ const Item = ({item, drawer}) => {
             }
             {/* interaction button */}
 
-            <div className='flex items-center justify-end space-x-2 border ml-auto'>
+            <div className='flex items-center justify-end space-x-2 ml-auto px-2'>
                 <button
                 title={drawer === 'cart' ? 'transfer to wishlist':'transfer to cart'} 
                 className="btn btn-circle xxs:w-4 lg:w-8 xxs:h-4 lg:h-8 xxs:p-0.5 lg:p-0 ">

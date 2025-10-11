@@ -45,7 +45,13 @@ const root = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <CustomContext>
-    <RouterProvider router={root} />
+    <RouterProvider router={root}
+    fallbackElement={
+          <div className="w-full h-screen flex items-center justify-center">
+            <p className="text-xl font-bold">Loading...</p>
+          </div>
+    }
+     />
     {/* <App /> */}
     </CustomContext>
   </StrictMode>,

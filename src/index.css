@@ -70,6 +70,11 @@
 }
 
 @layer utilities {
+    .blur-glass {
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    background: rgba(255, 255, 255, 0.15);
+  }
   .custom-section {
     background: linear-gradient(
       to right,
@@ -94,7 +99,10 @@
     bg-gradient-to-r from-purple-500/40 via-violet-700/30 to-pink-400/30
     rounded-xl shadow-xl
     backdrop-blur-2xl backdrop-saturate-150;
+  background-blend-mode: overlay;
 }
+
+
 
 
   .nav-card-gradient{
@@ -102,3 +110,5 @@
   }
 
 }
+
+
