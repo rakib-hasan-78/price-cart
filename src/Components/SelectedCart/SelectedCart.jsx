@@ -12,7 +12,8 @@ const SelectedCart = ({tabs, item}) => {
     const {
         getCartAmountHandler, 
         cartHandler,
-        decrementHandler
+        decrementHandler,
+        totals,
         } = useProduct();
     const {quantity,
            product_image,
