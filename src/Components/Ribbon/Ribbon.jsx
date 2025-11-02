@@ -2,7 +2,7 @@ import React from 'react';
 import filterImg from '../../assets/Frame.svg';
 import { useProduct } from './../../Utilities/Hooks/CustomContext/CustomContext';
 const Ribbon = ({tabs}) => {
-    const {cart, wishList, totals} = useProduct();
+    const {cart, wishList, totals, priceFilterHandler} = useProduct();
 
     return (
         <div className='w-full h-auto py-5 xxs:px-2 px-6 my-3 flex xxs:flex-col lg:flex-row items-center justify-between'>
@@ -23,7 +23,9 @@ const Ribbon = ({tabs}) => {
                     <div className='btn-gradient xxs:w-11/12'>
                         <div className='w-full body-default-bg rounded-full flex items-center xxs:justify-center lg:justify-between xxs:px-4 lg:px-4 xxs:py-3 lg:py-4'>
                             <button 
-                            className='btn btn-xs text-xl  border-none font-bold text-violet-500 bg-transparent ' type="button">
+                            className='btn btn-xs text-xl  border-none font-bold text-violet-500 bg-transparent ' type="button"
+                            onClick={()=>priceFilterHandler()}
+                            >
                                 <span>
                                     Sort by Price
                                 </span>

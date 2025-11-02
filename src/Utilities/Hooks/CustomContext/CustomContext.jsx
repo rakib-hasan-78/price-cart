@@ -193,8 +193,28 @@ const totals = useMemo(() => {
         ];
     }
 
+    // price sort func ===>
+    
+    const priceFilterHandler = () =>{
+        const sortProduct = [...cart].sort((a,b)=>{
+            if (a.price>b.price) {
+                return 1
+            } else if (a.price<b.price) {
+                return -1
+            } else {
+                return 0
+            }
+        });
+        setCart(sortProduct);
+        toast.info(`items sorted according to the highest price to the lowest!`, {
+            position:'top-center',
+        });
 
-    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals, getCartAmountHandler};
+        return;
+    }
+
+
+    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals, getCartAmountHandler, priceFilterHandler};
     return (
         <ProductManagement.Provider value={value}>
             {children}
