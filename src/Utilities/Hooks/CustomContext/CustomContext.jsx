@@ -197,12 +197,16 @@ const totals = useMemo(() => {
     
     const priceFilterHandler = () =>{
         const sortProduct = [...cart].sort((a,b)=>{
-            if (a.price>b.price) {
-                return 1
-            } else if (a.price<b.price) {
-                return -1
+            // price * quantity ===>
+            const productA = Number(a.price) * Number(a.quantity);
+            const productB = Number(b.price) * Number(b.quantity);
+            // sort product based on high price ===>
+            if (productA>productB) {
+                return -1;
+            } else if (productA<productB){
+                return 1;
             } else {
-                return 0
+                return 0;
             }
         });
         setCart(sortProduct);

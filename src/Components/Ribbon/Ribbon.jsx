@@ -24,7 +24,7 @@ const Ribbon = ({tabs}) => {
                         <div className='w-full body-default-bg rounded-full flex items-center xxs:justify-center lg:justify-between xxs:px-4 lg:px-4 xxs:py-3 lg:py-4'>
                             <button 
                             className='btn btn-xs text-xl  border-none font-bold text-violet-500 bg-transparent ' type="button"
-                            onClick={()=>priceFilterHandler()}
+                            onClick={priceFilterHandler}
                             >
                                 <span>
                                     Sort by Price
