@@ -2,6 +2,7 @@ import React from 'react';
 import SelectedCart from './../SelectedCart/SelectedCart';
 import CartAnimation from './../CartAnimation/CartAnimation';
 import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
+import Invoice from '../Invoice/Invoice';
 
 const SelectedProduct = ({tabs}) => {
     const {cart, wishList} =useProduct();
@@ -18,6 +19,13 @@ const SelectedProduct = ({tabs}) => {
                 )) :
             <CartAnimation tabs={tabs} />
 
+            )
+        }
+        {
+            tabs==='cart' && (
+                cart.length > 0 && (
+                    <Invoice />
+                )
             )
         }
         {
