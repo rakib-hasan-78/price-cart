@@ -1,6 +1,7 @@
 import React from 'react';
 import filterImg from '../../assets/Frame.svg';
 import { useProduct } from './../../Utilities/Hooks/CustomContext/CustomContext';
+import Modal from './../Modal/Modal';
 const Ribbon = ({tabs}) => {
     const {cart, wishList, totals, priceFilterHandler} = useProduct();
 
@@ -36,13 +37,7 @@ const Ribbon = ({tabs}) => {
                         </div>
                     </div>
                     <div className='xxs:w-full md:w-auto'>
-                        <button 
-                        className='py-3 px-5 rounded-full text-white font-semibold text-lg bg-gradient-to-r from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition-all duration-300 w-full'
-                        type='button'
-
-                        >
-                        purchase
-                        </button>
+                        <Modal cName={`py-7 px-6 rounded-full text-white font-semibold text-lg bg-gradient-to-r from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition-all duration-300 w-full`} />
                     </div>
                 </div>
                 </div>
@@ -54,3 +49,5 @@ const Ribbon = ({tabs}) => {
 };
 
 export default Ribbon;
+
+

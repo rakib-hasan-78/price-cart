@@ -27,7 +27,7 @@ const Invoice = () => {
                     </div>
                 </div>
                 
-                <Modal />
+                <Modal cName={`btn-primary`} />
             </div>
         </div>
     );

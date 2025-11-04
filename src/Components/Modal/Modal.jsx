@@ -1,14 +1,14 @@
 import React from "react";
 
-const Modal = () => {
+const Modal = ({cName}) => {
   return (
-    <div className="flex flex-col items-center justify-center mt-10 bg-violet-600">
+    <div className="flex flex-col items-center justify-center">
       {/* 🔘 Button to open modal */}
       <button
-        className="btn btn-primary"
+        className={`btn ${cName}`}
         onClick={() => document.getElementById("my_modal_3").showModal()}
       >
-        Open Modal
+        Purchase 
       </button>
 
       {/* 💡 Modal */}

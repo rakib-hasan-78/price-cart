@@ -24,7 +24,7 @@ const SelectedProduct = ({tabs}) => {
         {
             tabs==='cart' && (
                 cart.length > 0 && (
-                    <Invoice />
+                    <Invoice  />
                 )
             )
         }
