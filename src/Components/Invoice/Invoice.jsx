@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from './../Modal/Modal';
 import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
-const Invoice = () => {
+const Invoice = ({setDrawer}) => {
     const {totals} = useProduct()
     return (
         <div className='w-full h-auto flex items-center justify-center p-3'>
@@ -27,7 +27,7 @@ const Invoice = () => {
                     </div>
                 </div>
                 
-                <Modal cName={`btn-primary`} />
+                <Modal cName={`btn-primary`} setDrawer={setDrawer} />
             </div>
         </div>
     );

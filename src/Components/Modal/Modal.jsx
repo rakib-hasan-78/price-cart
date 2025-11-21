@@ -3,8 +3,13 @@ import { useProduct } from "../../Utilities/Hooks/CustomContext/CustomContext";
 import SuccessAnimation from './../SuccessAnimation/SuccessAnimation';
 import Line from '../../assets/Line 2.png';
 
-const Modal = ({cName}) => {
-  const {totals} = useProduct()
+const Modal = ({cName, setDrawer}) => {
+  const {totals, setWishList, setCart} = useProduct();
+  const operationDoneHandler = ()=>{
+      setCart([]);
+      setWishList([])
+      setDrawer(null)
+  }
   return (
     <div className="flex flex-col items-center justify-center">
       {/* 🔘 Button to open modal */}
@@ -22,7 +27,9 @@ const Modal = ({cName}) => {
 
           {/* Close button (X) */}
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black/25 hover:text-black">
+            <button
+            onClick={operationDoneHandler}
+             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black/25 hover:text-black">
               ✕
             </button>
           </form>

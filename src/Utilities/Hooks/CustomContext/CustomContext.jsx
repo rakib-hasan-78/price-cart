@@ -218,7 +218,7 @@ const totals = useMemo(() => {
     }
 
 
-    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals, getCartAmountHandler, priceFilterHandler};
+    const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals, getCartAmountHandler, priceFilterHandler, setCart, setWishList};
     return (
         <ProductManagement.Provider value={value}>
             {children}

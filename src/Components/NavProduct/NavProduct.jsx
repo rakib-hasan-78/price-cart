@@ -54,7 +54,7 @@ const NavProduct = ({ drawer, setDrawer, setIsOpen }) => {
       </div>
         {
           drawer==='cart' && cart.length>0 &&(
-            <Invoice />
+            <Invoice setDrawer={setDrawer} />
           )
         }
     </div>
