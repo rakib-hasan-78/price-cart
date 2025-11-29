@@ -18,8 +18,8 @@ const Nav = ({isScroll}) => {
 
     const navHandler = (e, type)=>{
         e.preventDefault();
-        setDrawer(pre=>pre===type ? null : type);
-        setIsOpen(false);
+         setDrawer(prev => (prev === type ? null : type));
+         setIsOpen(true);
     }
     
     return (
@@ -45,7 +45,7 @@ const Nav = ({isScroll}) => {
             </div>
             <div className='navbar-end'>
                 <div className="flex items-center justify-end space-x-3">
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end z-10">
                         <div tabIndex={0} role="button" className={`btn ${preferenceBG ? 'bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))]':'bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_theme(colors.purple.800)_37.3%,_theme(colors.indigo.900)_73.5%)] bg-blend-color  text-white backdrop-blur-md bg-white/10'} btn-circle`}>
                             <div className={`indicator z-10`}>
                             <BsCart3 className='text-xl'/>
@@ -77,7 +77,7 @@ const Nav = ({isScroll}) => {
                                 )
                             }
                     </div>
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end z-10">
                         <div tabIndex={0} role="button" className={`btn ${preferenceBG ? 'bg-[radial-gradient(circle,theme(colors.red.100)_40%,theme(colors.zinc.200))]':'bg-[radial-gradient(circle_farthest-corner_at_-5.6%_-6.8%,_theme(colors.purple.800)_37.3%,_theme(colors.indigo.900)_73.5%)] bg-blend-color  text-white backdrop-blur-2xl bg-white/10'} btn-circle`}>
                             <div className="indicator">
                             <CiHeart className='text-2xl' />
