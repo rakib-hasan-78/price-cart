@@ -10,7 +10,7 @@ import NavProduct from './../NavProduct/NavProduct';
 const Nav = ({isScroll}) => {
     const location = useLocation();
     const preferenceBG = location.pathname==='/';
-    const {cart, wishList} = useProduct();
+    const {cart, wishList, totals} = useProduct();
     
 
     const [drawer, setDrawer] = useState(null);
@@ -63,7 +63,7 @@ const Nav = ({isScroll}) => {
                                     className="card card-compact dropdown-content mt-3 w-52 border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl backdrop-blur-3xl nav-card-gradient">
                                     <div className="card-body">
                                     <span className="text-lg font-bold text-black">{cart.length} Items</span>
-                                    <span className="text-info">Subtotal: $999</span>
+                                    <span className="text-info font-black">Subtotal: $ {totals.subTotal.toFixed(2)}</span>
                                     <div className="card-actions">
                                         <button
                                         onClick={(e)=>navHandler(e, 'cart')} 
@@ -95,7 +95,7 @@ const Nav = ({isScroll}) => {
                                     className="card card-compact dropdown-content z-1 mt-3 w-52 border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl backdrop-blur-3xl nav-card-gradient">
                                     <div className="card-body">
                                     <span className="text-lg font-bold text-black">{wishList.length} Items</span>
-                                    <span className="text-info">Subtotal: $999</span>
+                                
                                     <div className="card-actions">
                                         <button
                                         onClick={(e)=>navHandler(e, 'wishlist')} 
