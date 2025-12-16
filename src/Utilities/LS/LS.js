@@ -3,9 +3,12 @@ const getLS =(itemName)=>{
     return LS? JSON.parse(LS) : [];
 }
 // storage set =>
+
 const setStorage = (itemName, item) => {
   localStorage.setItem(itemName, JSON.stringify(item));
 }
+
+// increment storage handler ===>
 
 const incrementLS = (itemName, product)=>{
     const LS = getLS(itemName);
@@ -18,6 +21,8 @@ const incrementLS = (itemName, product)=>{
     }
     setStorage(found);
 }
+
+// decrement storage handler ==> 
 
 const decrementLS =(itemName, product) => {
   const LS = getLS(itemName);
@@ -33,7 +38,29 @@ const decrementLS =(itemName, product) => {
   setStorage(itemName, decrementItem);
 }
 
+// remove items ===>
 
+const removeLS =(itemName, product) => {
+  const LS = getLS(itemName);
+  const removeItem = LS.filter(id=>id.product_id!==product.product_id);
+  setStorage(itemName, removeItem);
+}
 
+// clear all save data ==>
 
-export {getLS,incrementLS, decrementLS}
+const clearLS = itemName =>{
+  localStorage.removeItem(itemName);
+}
+
+// wishList Product HandlerLS ==>
+const wishLS = (itemName, product)=>{
+  const LS = getLS(itemName);
+  const updatedData = LS.find(item=> item.product_id === product.product_id);
+
+  if (!updatedData) {
+    LS.push({product_id:product.product_id})
+  }
+  setStorage(itemName, updatedData);
+}
+
+export {getLS,incrementLS, decrementLS, removeLS, clearLS, wishLS};
