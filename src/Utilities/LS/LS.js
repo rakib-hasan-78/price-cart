@@ -53,6 +53,7 @@ const clearLS = itemName =>{
 }
 
 // wishList Product HandlerLS ==>
+  
 const wishLS = (itemName, product)=>{
   const LS = getLS(itemName);
   const updatedData = LS.find(item=> item.product_id === product.product_id);

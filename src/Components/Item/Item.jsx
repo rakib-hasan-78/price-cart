@@ -12,7 +12,8 @@ const Item = ({item, drawer}) => {
         getCartAmountHandler, 
         cartHandler, 
         decrementHandler,
-        moveHandler
+        moveHandler,
+        removeHandler
         } = useProduct();
     const [subTotal] = getCartAmountHandler(item);
     return (
@@ -79,7 +80,10 @@ const Item = ({item, drawer}) => {
                 className="btn btn-circle xxs:w-4 lg:w-8 xxs:h-4 lg:h-8 xxs:p-0.5 lg:p-0 ">
                 <MdMoveUp />
                 </button>
-                <button className="btn btn-circle xxs:w-4 lg:w-8 xxs:h-4 lg:h-8 xxs:p-0.5 lg:p-0">
+
+                <button 
+                onClick={(e)=>removeHandler(e, item)}
+                 className="btn btn-circle xxs:w-4 lg:w-8 xxs:h-4 lg:h-8 xxs:p-0.5 lg:p-0">
                 <VscTrash />
                 </button>
             </div>

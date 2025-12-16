@@ -13,7 +13,9 @@ const SelectedCart = ({tabs, item}) => {
         getCartAmountHandler, 
         cartHandler,
         decrementHandler,
+        removeHandler,
         totals,
+        moveHandler
         } = useProduct();
     const {quantity,
            product_image,
@@ -86,6 +88,7 @@ const SelectedCart = ({tabs, item}) => {
                     tabs === 'wishlist' ? (
                         <div className='w-auto xxs:min-h-auto lg:min-h-[120px] flex items-center justify-center flex-wrap'>
                             <button
+                            onClick={(e)=>moveHandler(e, item)}
                             className='btn btn-circle' 
                             type="button"
                             title='Transfer to Cart List'
@@ -97,6 +100,7 @@ const SelectedCart = ({tabs, item}) => {
                     (
                         <div className='w-auto xxs:min-h-auto lg:min-h-[120px] inline-flex lg:flex items-center justify-center flex-wrap'>
                             <button
+                            onClick={(e) => moveHandler(e, item)}
                             className='btn btn-circle' 
                             type="button"
                             title='Move to Wish List!'
@@ -108,6 +112,7 @@ const SelectedCart = ({tabs, item}) => {
                 }
                 <div className='w-auto xxs:min-h-auto lg:min-h-[120px] flex items-center justify-center flex-wrap'>
                     <button
+                    onClick={(e) => removeHandler(e, item)}
                     className='btn btn-circle'
                     type="button"
                     >
