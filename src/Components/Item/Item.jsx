@@ -8,6 +8,7 @@ import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
 const Item = ({item, drawer}) => {
     const [toggle, setToggle] = useToggle();
+    console.log(drawer);
     const {
         getCartAmountHandler, 
         cartHandler, 
@@ -73,7 +74,8 @@ const Item = ({item, drawer}) => {
             }
             {/* interaction button */}
 
-            <div className='flex items-center justify-end space-x-2 ml-auto px-2'>
+            <div className='flex items-center justify-end space-x-2 ml-auto px-2 end-line'>
+
                 <button
                 onClick={(e)=>moveHandler(e, item)}
                 title={drawer === 'cart' ? 'transfer to wishlist':'transfer to cart'} 

@@ -28,10 +28,10 @@ const NavProduct = ({ drawer, setDrawer, setIsOpen }) => {
       {/* Scrollable Items */}
       <div className='w-full h-64 py-3 flex flex-col items-center justify-start space-y-2 overflow-y-auto rounded-lg px-2'>
         {drawer === 'cart' &&
-          (cart.length > 0 ? cart.map(item => <Item key={item.product_id} item={item} />) : <NavProductAnimation drawer={drawer} />)}
+          (cart.length > 0 ? cart.map(item => <Item key={item.product_id} item={item} drawer={drawer} />) : <NavProductAnimation drawer={drawer} />)}
 
         {drawer === 'wishlist' &&
-          (wishList.length > 0 ? wishList.map(item => <Item key={item.product_id} item={item} />) : <NavProductAnimation drawer={drawer} />)}
+          (wishList.length > 0 ? wishList.map(item => <Item key={item.product_id} item={item} drawer={drawer} />) : <NavProductAnimation drawer={drawer} />)}
       </div>
 
       {/* Show Invoice if cart has items */}
