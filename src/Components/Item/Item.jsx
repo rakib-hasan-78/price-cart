@@ -8,7 +8,6 @@ import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
 const Item = ({item, drawer}) => {
     const [toggle, setToggle] = useToggle();
-    console.log(drawer);
     const {
         getCartAmountHandler, 
         cartHandler, 
