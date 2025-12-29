@@ -19,7 +19,7 @@ const incrementLS = (itemName, product)=>{
     } else {
         found.quantity++
     }
-    setStorage(found);
+    setStorage(itemName, found);
 }
 
 // decrement storage handler ==> 
@@ -64,4 +64,4 @@ const wishLS = (itemName, product)=>{
   setStorage(itemName, updatedData);
 }
 
-export {getLS,incrementLS, decrementLS, removeLS, clearLS, wishLS};
+export {getLS,incrementLS, decrementLS, removeLS, clearLS, wishLS, setStorage};

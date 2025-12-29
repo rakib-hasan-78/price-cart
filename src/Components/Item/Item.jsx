@@ -13,28 +13,30 @@ const Item = ({item, drawer}) => {
         cartHandler, 
         decrementHandler,
         moveHandler,
-        removeHandler
+        removeHandler,
         } = useProduct();
     const [subTotal] = getCartAmountHandler(item);
     return (
         <div 
         className='xxs:w-full lg:w-11/12 xxs:py-0.5 lg:py-1.5 rounded-xl bg-gradient-to-r from-purple-600/90 via-violet-700/90 to-pink-400/90 border border-pink-100 backdrop-blur-2xl bg-blend-color-dodge flex items-center justify-start xxs:space-x-1.5 lg:space-x-4'>
             <div className=' flex items-center justify-start xxs:space-x-1 lg:space-x-2 p-2 xxs:w-36 lg:w-60'>
-                <div className='xxs:w-14 lg:w-12 xxs:h-7 lg:h-12 rounded-xl'>
-                    <img
-                    className='rounded-md' 
-                    src={item.product_image} alt={item.product_title} />
-                </div>
-                <div className='flex items-start justify-start flex-col text-violet-100'>
-                    <h3
-                    onClick={setToggle}
-                     className={`text-[13px] ${toggle ? 'line-clamp-none':'line-clamp-1'} cursor-pointer font-bold`}
-                     >
-                     {item.product_title}
-                     </h3>
-                     <p className='text-[9px]'>price: $ {item.price}</p>
-                     <p className='text-[9px]'>shipping coast: $ {item.shipping_charge}</p>
-                </div>
+                    <div className='xxs:w-14 lg:w-12 xxs:h-7 lg:h-12 rounded-xl'>
+                        <img
+                        className='rounded-md' 
+                        src={item.product_image}
+                        alt={item.product_title}
+                        />
+                    </div>
+                    <div className='flex items-start justify-start flex-col text-violet-100'>
+                        <h3
+                        onClick={setToggle}
+                        className={`text-[13px] ${toggle ? 'line-clamp-none':'line-clamp-1'} cursor-pointer font-bold`}
+                        >
+                        {item.product_title}
+                        </h3>
+                        <p className='text-[9px]'>price: $ {item.price}</p>
+                        <p className='text-[9px]'>shipping coast: $ {item.shipping_charge}</p>
+                    </div>
             </div>
             {/* if it shows cart */}
 

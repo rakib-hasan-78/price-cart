@@ -6,6 +6,7 @@ import useToggle from '../../Utilities/Hooks/useToggle/useToggle';
 import { useNavigate } from 'react-router-dom';
 import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 
+
 const Card = ({product}) => {
     const {product_title, product_image, price, product_id} = product;
     const [expand, setExpand] = useToggle();
@@ -16,6 +17,7 @@ const Card = ({product}) => {
         e.preventDefault();
         navigateDetail(`/products/${product_id}`);
     }
+
     return (
         <div 
         className='w-full h-auto flex flex-col items-start justify-center border border-violet-50 shadow-md shadow-violet-600/30 rounded-2xl card-gradient p-4'>

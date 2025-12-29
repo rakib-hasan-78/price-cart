@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 
+
 const ProductManagement = createContext();
 export const useProduct = ()=> useContext(ProductManagement);
 
 const CustomContext = ({children}) => {
     const [cart, setCart] =  useState([]);
     const [wishList , setWishList] = useState([]);
+
     const TAX_RATE = 0.125;
 
     const cartHandler = (e,product) =>{
@@ -71,6 +73,7 @@ const CustomContext = ({children}) => {
         }
         else {
             setWishList([...wishList, product]);
+        
             toast.success(`${product.product_title } Added To Wish List!`, {
                 position:'top-center',
             });
@@ -119,6 +122,7 @@ const CustomContext = ({children}) => {
                 position:'top-center',
             });
             setCart([...cart, {...product , quantity:1}]);
+            
             const movedProduct = wishList.filter(item =>item.product_id !== product.product_id);
             setWishList(movedProduct);
             return;
@@ -218,12 +222,16 @@ const totals = useMemo(() => {
     }
 
 
+
     const value = {cart, wishList, cartHandler, wishListHandler, removeHandler, decrementHandler, moveHandler, totals, getCartAmountHandler, priceFilterHandler, setCart, setWishList};
     return (
         <ProductManagement.Provider value={value}>
             {children}
         </ProductManagement.Provider>
     );
+
+    
 };
 
 export default CustomContext;
+
