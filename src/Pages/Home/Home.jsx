@@ -13,7 +13,7 @@ const Home = () => {
     const productSection = useRef(null);
 
     const userdata = useLoaderData();
-    const {setCart} = useProduct();
+    const {setCart, setWishList} = useProduct();
 
     useEffect(() => {
     // products for cart==> ----
@@ -31,9 +31,17 @@ const Home = () => {
     // products for wishlist ==> 
     
     const storedWishlist = getLS('wish-list-items');
+    if (storedWishlist.length>0) {
+        const checkingWishlistData = storedWishlist.map(({product_id})=>{
+            const retrievedData = userdata.find(data=> data.product_id === product_id);
+            if (!retrievedData) return null;
+            return {...retrievedData}
+        }).filter(Boolean)
+        setWishList(checkingWishlistData)
+    }
     
 
-    }, [userdata, setCart]);
+    }, [userdata, setCart, setWishList]);
 
     const shopProductHandler = e=>{
         e.preventDefault();

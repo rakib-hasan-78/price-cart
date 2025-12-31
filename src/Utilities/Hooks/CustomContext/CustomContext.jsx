@@ -146,7 +146,7 @@ const CustomContext = ({children}) => {
             wishLS('wish-list-items', product)
             const removedItem = cart.filter(item => item.product_id !== product.product_id);
             // remove from cart ls ===> 
-            removeLS('cart-item', product)
+            removeLS('cart-item', product);
             setCart(removedItem);
             toast.info(`${product.product_title} Moved To Wish List !`, {
                 position:'top-center',
