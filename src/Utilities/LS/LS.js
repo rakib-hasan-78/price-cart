@@ -67,4 +67,5 @@ const wishLS = (itemName, product)=>{
   setStorage(itemName, LS);
 }
 
+
 export {getLS,incrementLS, decrementLS, removeLS, clearLS, wishLS, setStorage};

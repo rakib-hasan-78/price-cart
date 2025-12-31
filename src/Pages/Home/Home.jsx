@@ -13,12 +13,11 @@ const Home = () => {
     const productSection = useRef(null);
 
     const userdata = useLoaderData();
-    console.log(userdata.length);
-    
-
     const {setCart} = useProduct();
 
     useEffect(() => {
+    // products for cart==> ----
+
     const storedCart = getLS('cart-item'); // fetch saved cart
     if (storedCart.length > 0) {
         const storedData = storedCart.map(({product_id, quantity})=>{
@@ -28,6 +27,12 @@ const Home = () => {
         }).filter(Boolean)
         setCart(storedData)
     }
+
+    // products for wishlist ==> 
+    
+    const storedWishlist = getLS('wish-list-items');
+    
+
     }, [userdata, setCart]);
 
     const shopProductHandler = e=>{

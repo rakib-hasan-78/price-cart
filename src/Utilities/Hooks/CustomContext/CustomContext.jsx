@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
-import { incrementLS } from '../../LS/LS';
+import { incrementLS, removeLS, wishLS } from '../../LS/LS';
 
 
 const ProductManagement = createContext();
@@ -76,7 +76,8 @@ const CustomContext = ({children}) => {
         }
         else {
             setWishList([...wishList, product]);
-        
+            // LS Logic ===>
+            wishLS('wish-list-items', product)
             toast.success(`${product.product_title } Added To Wish List!`, {
                 position:'top-center',
             });
@@ -128,6 +129,8 @@ const CustomContext = ({children}) => {
             
             const movedProduct = wishList.filter(item =>item.product_id !== product.product_id);
             setWishList(movedProduct);
+            // remove from ls from wishlist ===> 
+            removeLS('wish-list-items', product);
             return;
             }
             else {
@@ -139,7 +142,11 @@ const CustomContext = ({children}) => {
         }
         if (targetedCartList) {
             setWishList([...wishList, product]);
+            // add to wishlist ls ===> 
+            wishLS('wish-list-items', product)
             const removedItem = cart.filter(item => item.product_id !== product.product_id);
+            // remove from cart ls ===> 
+            removeLS('cart-item', product)
             setCart(removedItem);
             toast.info(`${product.product_title} Moved To Wish List !`, {
                 position:'top-center',
@@ -154,12 +161,14 @@ const CustomContext = ({children}) => {
         if (cartProduct) {
             const removedProduct = cart.filter(item=>item.product_id !== product.product_id);
             setCart(removedProduct);
+            removeLS('cart-item', product)
             return;
         }
 
         if (wishListProduct) {
             const removedProduct = wishList.filter(item=> item.product_id !== product.product_id);
             setWishList(removedProduct);
+            removeLS('wish-list-items', product)
             return;
         }
 
