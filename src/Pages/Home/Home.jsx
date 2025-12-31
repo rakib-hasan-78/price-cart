@@ -1,14 +1,34 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Hero from './../../Components/Hero/Hero';
 import DisplayProduct from './../../Components/DisplayProduct/DisplayProduct';
 import Search from './../../Components/Search/Search';
 import Products from './../../Components/Products/Products';
-
+import { useLoaderData } from 'react-router-dom';
+import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
+import { getLS } from '../../Utilities/LS/LS';
 
 
 const Home = () => {
     const [search, setSearch]= useState('');
     const productSection = useRef(null);
+
+    const userdata = useLoaderData();
+    console.log(userdata.length);
+    
+
+    const {setCart} = useProduct();
+
+    useEffect(() => {
+    const storedCart = getLS('cart-item'); // fetch saved cart
+    if (storedCart.length > 0) {
+        const storedData = storedCart.map(({product_id, quantity})=>{
+            const retrievedData = userdata.find(data=>data.product_id === product_id)
+            if(!retrievedData) return null;
+            return {...retrievedData , quantity}
+        }).filter(Boolean)
+        setCart(storedData)
+    }
+    }, [userdata, setCart]);
 
     const shopProductHandler = e=>{
         e.preventDefault();

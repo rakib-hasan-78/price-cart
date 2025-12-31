@@ -19,7 +19,7 @@ const incrementLS = (itemName, product)=>{
     } else {
         found.quantity++
     }
-    setStorage(itemName, found);
+    setStorage(itemName, LS);
 }
 
 // decrement storage handler ==> 
@@ -27,14 +27,17 @@ const incrementLS = (itemName, product)=>{
 const decrementLS =(itemName, product) => {
   const LS = getLS(itemName);
   const decrementItem = LS.map(item=>{
-    const found = item.find(item=>item.product_id===product.product_id);
-    if (found.quantity >1) {
-        return {...item, quantity: item.quantity-1}
-    } else{
-        return null;
+    if (item.product_id === product.product_id) {
+      if (item.quantity >1) {
+          return {...item, quantity: item.quantity-1}
+      } else{
+          return null;
+      }
+      
     }
-    
+    return item;
   }).filter(Boolean);
+      
   setStorage(itemName, decrementItem);
 }
 
@@ -61,7 +64,7 @@ const wishLS = (itemName, product)=>{
   if (!updatedData) {
     LS.push({product_id:product.product_id})
   }
-  setStorage(itemName, updatedData);
+  setStorage(itemName, LS);
 }
 
 export {getLS,incrementLS, decrementLS, removeLS, clearLS, wishLS, setStorage};

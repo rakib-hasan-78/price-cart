@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
+import { incrementLS } from '../../LS/LS';
 
 
 const ProductManagement = createContext();
@@ -33,6 +34,7 @@ const CustomContext = ({children}) => {
              cart.map((cartItem, _)=> cartItem.product_id === product.product_id ? {...cartItem, quantity: cartItem.quantity + 1}: cartItem);
 
              setCart(matchedProduct);
+             incrementLS('cart-item', product)
              return;
         }
         else{
@@ -49,6 +51,7 @@ const CustomContext = ({children}) => {
                     position:'top-center',
                 });
                 setCart([...cart, {...product, quantity:1}]);
+                incrementLS('cart-item', product)
                 return;
             }
         }
