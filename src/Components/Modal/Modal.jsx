@@ -2,12 +2,15 @@ import React, { useRef } from "react";
 import { useProduct } from "../../Utilities/Hooks/CustomContext/CustomContext";
 import SuccessAnimation from './../SuccessAnimation/SuccessAnimation';
 import Line from '../../assets/Line 2.png';
+import { clearLS } from "../../Utilities/LS/LS";
 
 const Modal = ({ cName, setDrawer }) => {
   const { totals, setCart, setWishList } = useProduct();
   const modalRef = useRef();
 
   const operationDoneHandler = () => {
+    clearLS('wish-list-items');
+    clearLS('cart-item');
     setCart([]);
     setWishList([]);
     setDrawer(null);
