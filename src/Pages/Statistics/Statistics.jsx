@@ -78,12 +78,15 @@ const Statistics = () => {
                 </div>
                     {
                         cart.length<1 && (
-                           <button 
-                           className='btn btn-block lg:w-3/12 xl:w-2/12 2xl:w-1/12 capitalize rounded-full text-white font-semibold text-lg bg-gradient-to-r from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition-all duration-300'
-                           onClick={()=>navigationHandler(`/`)}
-                           >
-                            add products
-                           </button> 
+                            <div className='w-full flex items-center justify-center'>
+                            <button 
+                            className='btn btn-block xxs:btn-sm md:btn-lg md:w-6/12 lg:w-3/12 lg:btn-xl 2xl:w-2/12 capitalize rounded-full text-white font-semibold text-lg bg-gradient-to-r from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition-all duration-300'
+                            onClick={()=>navigationHandler(`/`)}
+                            >
+                                add products
+                            </button> 
+
+                            </div>
                         )
                     }
             </div>
