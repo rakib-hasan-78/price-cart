@@ -1,6 +1,6 @@
 import React from 'react';
 import { LuX } from "react-icons/lu";
-const Search = ({search, setSearch}) => {
+const Search = ({search, setSearch, data}) => {
     
     return (
         <div className='xxs:w-10/11 lg:w-6/12 h-36 flex flex-col items-center justify-center  mx-auto py-5 relative xxs:-translate-y-1/3 lg:-translate-y-3/3 space-y-2'>
@@ -20,8 +20,15 @@ const Search = ({search, setSearch}) => {
                     )
                 }
             </div>
-            <span>{search.length}</span>
-        </div>
+            {
+                search.length > 0 && (
+                    <span className="text-sm">
+                    {data > 0 ? `${data} products found` : 'No product found!'}
+                    </span>
+                )
+            }
+
+            </div>
     );
 };
 

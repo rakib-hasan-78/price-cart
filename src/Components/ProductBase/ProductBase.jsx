@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Card from './../Card/Card';
 import { useLoaderData } from 'react-router-dom';
+import ContError from './../ContError/ContError';
 
-const ProductBase = ({categories, search}) => {
+const ProductBase = ({categories, search, setSearch, setData}) => {
     const [visibleProducts, setVisibleProducts] = useState(8);
     const [isLoading, setIsLoading] = useState(false);
     const allProducts = useLoaderData();
@@ -20,6 +21,12 @@ const ProductBase = ({categories, search}) => {
 
     const displayProducts = filteredProduct.slice(0, visibleProducts);
 
+    useEffect(()=>{
+                 if (search.length > 0) {
+        setData(displayProducts.length);
+    }
+    },[displayProducts, setData, search])
+
     //  loadHandler ===> 
     const productLoadingHandler = ()=>{
         if (isLoading) return; 
@@ -36,40 +43,57 @@ const ProductBase = ({categories, search}) => {
     }
 
     return (
-        <div className='w-10/12 py-3 '>
-            <div className='w-auto grid xxs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-center justify-items-center'>
-                {
-                    displayProducts.map(product=>(
-                        <Card key={product.product_id} product={product} />
-                    ))
-                }
-            </div>
-                {
-                    isLoading && (
-                        <div className='w-full py-2 flex items-center justify-center mt-5'>
-                        <span className="loading loading-ring loading-xl"></span>
+        <div className='min-w-10/12 py-3 flex items-center justify-center'>
+            {
+                displayProducts.length>0 ? (
+                    <div className='w-full py-3 '>
+                        <div className='w-auto grid xxs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-center justify-items-center'>
+                            {
+                                displayProducts.map(product=>(
+                                    <Card key={product.product_id} product={product} />
+                                ))
+                            }
                         </div>
-                    )
-                }
-            <div className="w-auto my-5  py-5 flex items-center justify-center">
-                <div className='w-auto border-2 rounded-full p-0.5 border-purple-400'>
-                <button
-                className='btn btn-wide text-lg bg-purple-800 text-purple-100 uppercase  py-6 rounded-full '
-                onClick={productLoadingHandler} 
-                type="button"
-                disabled={isLoading}
-                >
-                {
-                  <>
+                            {
+                                isLoading && (
+                                    <div className='w-full py-2 flex items-center justify-center mt-5'>
+                                    <span className="loading loading-ring loading-xl"></span>
+                                    </div>
+                                )
+                            }
+                        <div className="w-auto my-5  py-5 flex items-center justify-center">
+                            <div className='w-auto border-2 rounded-full p-0.5 border-purple-400'>
+                            <button
+                            className='btn btn-wide text-lg bg-purple-800 text-purple-100 uppercase  py-6 rounded-full '
+                            onClick={productLoadingHandler} 
+                            type="button"
+                            disabled={isLoading}
+                            >
+                            {
+                            <>
 
-                  {visibleProducts < filteredProduct.length ? 'load more' : 'load less'}
+                            {visibleProducts < filteredProduct.length ? 'load more' : 'load less'}
 
-                  {isLoading && <span className="loading loading-spinner loading-sm"></span>}
-                  </>  
-                }
-                </button>
-                </div>
-            </div>
+                            {isLoading && <span className="loading loading-spinner loading-sm"></span>}
+                            </>  
+                            }
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                ) :
+                (
+                    <div className='max-w-full h-[320px] py-3 flex flex-col'>
+                        <ContError />
+                        <div className='w-auto my-5  py-5 flex items-center justify-center'>
+                            <button
+                            className='btn btn-wide text-lg bg-purple-800 text-purple-100 uppercase  py-6 rounded-full ' 
+                            onClick={()=>setSearch('')} type="button">return</button>
+                        </div>
+                    </div>
+                )
+            }
         </div>
     );
 };

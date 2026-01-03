@@ -10,6 +10,7 @@ import { getLS } from '../../Utilities/LS/LS';
 
 const Home = () => {
     const [search, setSearch]= useState('');
+    const [data, setData] = useState('');
     const productSection = useRef(null);
 
     const userdata = useLoaderData();
@@ -78,9 +79,9 @@ const Home = () => {
             }
            </Hero>
            <DisplayProduct />
-           <Search search={search} setSearch={setSearch} />
+           <Search search={search} setSearch={setSearch} data={data} />
            <div ref={productSection}>
-            <Products search={search} />
+            <Products search={search}  setSearch={setSearch} setData={setData} />
            </div>
         </div>   
     );

@@ -20,7 +20,7 @@ const Categories = ({categories, setCategories}) => {
     
     return (
         <div 
-            className='xxs:w-full lg:w-2/12 border py-3 secondary-bg-gradient flex flex-wrap xxs:flex-row lg:flex-col items-center justify-center space-y-3 mt-3.5'
+            className='xxs:min-w-full lg:min-w-2/12 border py-3 secondary-bg-gradient flex flex-wrap xxs:flex-row lg:flex-col items-center justify-center space-y-3 mt-3.5'
             >
             <h4 
             className='bg-gradient-to-r from-zinc-900/80 to-slate-800/text-transparent bg-clip-text font-semibold  xxs:text-sm:text-base md:text-lg lg:text-xl py-1'
