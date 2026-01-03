@@ -10,9 +10,11 @@ import Hero from './../../Components/Hero/Hero';
 const Statistics = () => {
     const {cart} = useProduct()
     const navigation = useNavigate();
+
     const navigationHandler = (page)=>{
         navigation(page);
     }
+    
     return (
         <>
             <Hero className={`xxs:h-[300px] lg:h-[360px]`}>
@@ -21,7 +23,7 @@ const Statistics = () => {
                         <h1 className='text-bg hero-title'> 
                             Cart items statistics 
                         </h1>
-                    
+                    {/* dynamic text for hero section ===> */}
                         <p className="hero-brief">
                         {
                             cart.length>0 ?
@@ -34,7 +36,7 @@ const Statistics = () => {
                         }
                         </p>
                     </div>
-                    {/* action button */}
+                    {/* dynamic action button ===> */}
                     <div
                     className='w-full h-auto flex items-center justify-center'
                     >
@@ -64,6 +66,7 @@ const Statistics = () => {
                     </div>
             </Hero>
             <div className={`w-full min-h-[600px] flex flex-col my-4`}>
+            {/* dynamic contents based on data ===> */}
                 <div
                 className='w-full h-[500px] flex items-center justify-center'
                 >
@@ -76,6 +79,7 @@ const Statistics = () => {
                     }
 
                 </div>
+                {/* dynamic action button if no data ===> */}
                     {
                         cart.length<1 && (
                             <div className='w-full flex items-center justify-center'>
