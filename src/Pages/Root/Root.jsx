@@ -9,7 +9,7 @@ import Footer from './../../Components/Footer/Footer';
 const Root = () => {
 
     return (
-        <div className='w-full min-h-full flex flex-col justify-between items-center'>
+        <div className='w-full min-h-full'>
             <main className='xxs:pt-0 lg:pt-5'>
             <Header />       
             <Outlet />

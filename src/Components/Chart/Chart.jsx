@@ -33,14 +33,11 @@ const Chart = () => {
           {/* LEFT axis for quantity */}
           <YAxis yAxisId="left" />
 
-          {/* RIGHT axis for price */}
-          <YAxis yAxisId="right" orientation="right" />
-
           <Tooltip />
           <Legend />
 
           {/* Bars → quantity */}
-          <Bar dataKey="quantity" yAxisId="left" />
+          <Bar dataKey="price" yAxisId="left" fill="#a855f7"/>
 
           {/* Line → price */}
           <Line type="monotone" dataKey="price" yAxisId="right" />
