@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-     "vercel-build": "npm install --legacy-peer-deps && npm run build"
+    "vercel-build": "npm install --legacy-peer-deps && npm run build"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.15.2",
@@ -21,6 +21,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-headroom": "^3.2.1",
+    "react-helmet-async": "^2.0.5",
     "react-icons": "^5.5.0",
     "react-is": "^19.2.3",
     "react-router-dom": "^7.7.0",
