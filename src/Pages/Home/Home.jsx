@@ -6,6 +6,7 @@ import Products from './../../Components/Products/Products';
 import { useLoaderData } from 'react-router-dom';
 import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 import { getLS } from '../../Utilities/LS/LS';
+import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
@@ -54,6 +55,9 @@ const Home = () => {
 
     return (
         <div className={`w-full min-h-full flex flex-col items-center`}>
+            <Helmet>
+                <title>Plug & Push | Home</title>
+            </Helmet>
            <Hero className={`xxs:h-[360px] lg:h-[600px]`}>
             {
                <div className='bg-hero'>

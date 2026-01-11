@@ -10,6 +10,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Statistics from './Pages/Statistics/Statistics';
 import ProductDetails from './Components/ProductDetails/ProductDetails.jsx'
 import CustomContext from './Utilities/Hooks/CustomContext/CustomContext.jsx'
+import { HelmetProvider } from 'react-helmet-async'
 
 
 const root = createBrowserRouter([
@@ -44,15 +45,18 @@ const root = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CustomContext>
-    <RouterProvider router={root}
-    fallbackElement={
-          <div className="w-full h-screen flex items-center justify-center">
-            <p className="text-xl font-bold">Loading...</p>
-          </div>
-    }
-     />
-    {/* <App /> */}
-    </CustomContext>
+  
+    <HelmetProvider>
+      <CustomContext>
+      <RouterProvider router={root}
+      fallbackElement={
+            <div className="w-full h-screen flex items-center justify-center">
+              <p className="text-xl font-bold">Loading...</p>
+            </div>
+      }
+      />
+      {/* <App /> */}
+      </CustomContext>
+    </HelmetProvider>
   </StrictMode>,
 )
