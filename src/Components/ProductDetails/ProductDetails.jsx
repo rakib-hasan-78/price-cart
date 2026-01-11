@@ -1,10 +1,20 @@
 import React from 'react';
 import Hero from './../Hero/Hero';
 import DetailCard from './../DetailCard/DetailCard';
+import { Helmet } from 'react-helmet-async';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 const ProductDetails = () => {
+    const {product_id} = useParams();
+    const userData = useLoaderData();
+    const data = userData.find(usrDta=>usrDta.product_id=== product_id);
+    const {product_title, product_image} = data;
     return (
         <section className='w-full h-auto flex flex-col'>
+            <Helmet>
+                <title>{product_title}</title>
+
+            </Helmet>
             <Hero className={`h-[380px]`}>
             {
                <div className='bg-hero'>
