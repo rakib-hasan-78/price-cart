@@ -4,6 +4,7 @@ import { useProduct } from '../../Utilities/Hooks/CustomContext/CustomContext';
 import StatAnim from '../../Components/StatAnim/StatAnim';
 import { useNavigate } from 'react-router-dom';
 import Hero from './../../Components/Hero/Hero';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -17,6 +18,9 @@ const Statistics = () => {
     
     return (
         <>
+            <Helmet>
+                <title>Push & Plug | Statistics </title>
+            </Helmet>
             <Hero className={`xxs:h-[300px] lg:h-[360px]`}>
                 <div className="bg-hero">
                     <div className='w-full xs:px-4 xl:px-20 2xl:px-40 xxs:pt-8  lg:pt-0'>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Hero from '../../Components/Hero/Hero';
 import Ribbon from './../../Components/Ribbon/Ribbon';
 import SelectedProduct from './../../Components/SelectedProduct/SelectedProduct';
+import { Helmet } from 'react-helmet-async';
 
 const Dashboard = () => {
     const [tabs, setTabs] = useState('cart');
@@ -13,6 +14,9 @@ const Dashboard = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Plug & Push | Download</title>
+        </Helmet>
           <Hero className={`xxs:h-[300px] lg:h-[360px]`}>
             {
                 <div className='bg-hero'>

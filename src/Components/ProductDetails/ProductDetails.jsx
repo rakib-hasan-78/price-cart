@@ -13,7 +13,7 @@ const ProductDetails = () => {
         <section className='w-full h-auto flex flex-col'>
             <Helmet>
                 <title>{product_title}</title>
-
+                
             </Helmet>
             <Hero className={`h-[380px]`}>
             {
